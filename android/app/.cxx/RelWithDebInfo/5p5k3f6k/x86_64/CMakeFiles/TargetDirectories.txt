@@ -1,0 +1,2 @@
+D:/23.4.2025 Armish design Driver app/driver_app/driver_app/android/app/.cxx/RelWithDebInfo/5p5k3f6k/x86_64/CMakeFiles/edit_cache.dir
+D:/23.4.2025 Armish design Driver app/driver_app/driver_app/android/app/.cxx/RelWithDebInfo/5p5k3f6k/x86_64/CMakeFiles/rebuild_cache.dir
