@@ -23,8 +23,8 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.driverDashboard;
-  // static const initial = Routes.SelectCompany;
+  // static const initial = Routes.driverDashboard;
+  static const initial = Routes.SelectCompany;
 
   static final routes = [
     GetPage(name: _Paths.loginScreen, page: () => LoginScreen()),

@@ -13,6 +13,7 @@ class MyEarningsScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 91, 19, 128),
         leading: IconButton(
           onPressed: () {
             Get.back();
@@ -39,13 +40,16 @@ class MyEarningsScreen extends StatelessWidget {
         children: [
           Text(
             "Today, 19,Sep",
-            style: TextStyle(
-         
-              color: theme.textTheme.bodyMedium!.color
-            ),
+            style: TextStyle(color: theme.textTheme.bodyMedium!.color),
           ),
 
-          Text("£75.80", style: gilroyBold(fontSize: 35.0)),
+          Text(
+            "£75.80",
+            style: gilroyBold(
+              fontSize: 35.0,
+              color: theme.textTheme.bodyMedium!.color,
+            ),
+          ),
           SizedBox(height: 25),
           InkWell(
             onTap: () {},
@@ -71,7 +75,10 @@ class MyEarningsScreen extends StatelessWidget {
                   " Cash(£75.80)",
                   style: TextStyle(
                     fontSize: 12,
-                    color: theme.textTheme.bodyMedium!.color, // yha pr color hai -------------------------------
+                    color: theme
+                        .textTheme
+                        .bodyMedium!
+                        .color, // yha pr color hai -------------------------------
                   ),
                 ),
               ],
@@ -88,7 +95,7 @@ class MyEarningsScreen extends StatelessWidget {
           ),
           Text(
             "Jobs",
-            style: gilroyLight(       color: theme.textTheme.bodyMedium!.color,),
+            style: gilroyLight(color: theme.textTheme.bodyMedium!.color),
           ), // yha pr color hai -----------------------
           Padding(
             padding: const EdgeInsets.only(top: 15.0),
@@ -105,7 +112,10 @@ class MyEarningsScreen extends StatelessWidget {
                   "Cash",
                   style: gilroyLight(
                     fontSize: 20,
-                    color: theme.textTheme.bodyMedium!.color, // yha pr color hai ------------------------------------
+                    color: theme
+                        .textTheme
+                        .bodyMedium!
+                        .color, // yha pr color hai ------------------------------------
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -114,8 +124,10 @@ class MyEarningsScreen extends StatelessWidget {
                   "£75.80",
                   style: gilroyLight(
                     fontSize: 20,
-                    color: DynamicColors
-                        .blackColor, // yha pr color hai --------------------------
+                    color: theme
+                        .textTheme
+                        .bodyMedium!
+                        .color, // yha pr color hai --------------------------
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -130,8 +142,10 @@ class MyEarningsScreen extends StatelessWidget {
                   "Credit Card",
                   style: gilroyLight(
                     fontSize: 20,
-                    color: DynamicColors
-                        .blackColor, // yha pr color hai --------------------------
+                    color: theme
+                        .textTheme
+                        .bodyMedium!
+                        .color, // yha pr color hai --------------------------
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -140,8 +154,10 @@ class MyEarningsScreen extends StatelessWidget {
                   "£75.80",
                   style: gilroyLight(
                     fontSize: 20,
-                    color: DynamicColors
-                        .blackColor, // yha pr color hai ------------------------------------
+                    color: theme
+                        .textTheme
+                        .bodyMedium!
+                        .color, // yha pr color hai ------------------------------------
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -156,8 +172,10 @@ class MyEarningsScreen extends StatelessWidget {
                   "Amount",
                   style: gilroyLight(
                     fontSize: 20,
-                    color: DynamicColors
-                        .blackColor, // yha pr color hai -------------------
+                    color: theme
+                        .textTheme
+                        .bodyMedium!
+                        .color, // yha pr color hai -------------------
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -166,7 +184,7 @@ class MyEarningsScreen extends StatelessWidget {
                   "£75.80",
                   style: gilroyLight(
                     fontSize: 20,
-                    color: DynamicColors.blackColor,
+                    color: theme.textTheme.bodyMedium!.color,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -178,9 +196,21 @@ class MyEarningsScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Row(
               children: [
-                Text("Total", style: gilroyBold(fontSize: 25.0)),
+                Text(
+                  "Total",
+                  style: gilroyBold(
+                    fontSize: 25.0,
+                    color: theme.textTheme.bodyMedium!.color,
+                  ),
+                ),
                 Spacer(),
-                Text("£75.80", style: gilroyBold(fontSize: 25.0)),
+                Text(
+                  "£75.80",
+                  style: gilroyBold(
+                    fontSize: 25.0,
+                    color: theme.textTheme.bodyMedium!.color,
+                  ),
+                ),
               ],
             ),
           ),

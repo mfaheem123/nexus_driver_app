@@ -351,7 +351,7 @@ class _DashboardHomeState extends State<DashboardHome> {
   }
 
   Widget _buildDashboardButton(
-    IconData icon,
+    IconData? icon,
     String title, {
     bool badge = false,
     bool check = false,
@@ -376,6 +376,7 @@ class _DashboardHomeState extends State<DashboardHome> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+            
                 Icon(icon, color: Colors.white, size: 40),
                 const SizedBox(height: 10),
                 Text(
