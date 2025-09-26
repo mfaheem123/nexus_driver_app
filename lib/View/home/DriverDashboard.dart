@@ -1,8 +1,12 @@
 import 'package:driver_app_alpha/Component/textStyle.dart';
+import 'package:driver_app_alpha/Controller/navigationController.dart';
 import 'package:driver_app_alpha/Routes/app_pages.dart';
 import 'package:driver_app_alpha/View/home/Setting/list.dart';
 import 'package:driver_app_alpha/View/home/Statistics/statictics.dart';
+import 'package:driver_app_alpha/View/home/driverPay.dart';
+import 'package:driver_app_alpha/View/home/flagDown.dart';
 import 'package:driver_app_alpha/View/home/jobDetailsScreen.dart';
+import 'package:driver_app_alpha/View/home/multiJob.dart';
 import 'package:driver_app_alpha/View/home/my_earning.dart';
 import 'package:driver_app_alpha/View/home/profileScreen.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +17,13 @@ class DriverDashboard extends StatefulWidget {
   State<DriverDashboard> createState() => _DriverDashboardState();
 }
 
+final AmountController amountController = Get.find<AmountController>();
+
 class _DriverDashboardState extends State<DriverDashboard> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const DashboardHome(), // We'll move the dashboard UI into a separate widget
+    DashboardHome(), // We'll move the dashboard UI into a separate widget
     JobDetailsScreen(),
     MyEarningsScreen(),
     // Center(child: Text('Your Trips')),
@@ -65,7 +71,7 @@ class _DriverDashboardState extends State<DriverDashboard> {
 
 // 👇 Moved your dashboard UI to a separate widget
 class DashboardHome extends StatefulWidget {
-  const DashboardHome({super.key});
+  DashboardHome({super.key});
 
   @override
   State<DashboardHome> createState() => _DashboardHomeState();
@@ -82,13 +88,8 @@ class _DashboardHomeState extends State<DashboardHome> {
     return Column(
       children: [
         Container(
-          color: const Color.fromARGB(255, 91, 19, 128),
-          padding: const EdgeInsets.only(
-            top: 20,
-            left: 20,
-            right: 20,
-            bottom: 15,
-          ),
+          color: Color.fromARGB(255, 91, 19, 128),
+          padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -155,7 +156,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                       ),
                       Row(
                         children: [
-                          const Icon(Icons.badge_outlined),
+                          Icon(Icons.badge_outlined),
                           Text(
                             '1',
                             style: gilroyMedium(
@@ -163,16 +164,20 @@ class _DashboardHomeState extends State<DashboardHome> {
                               color: theme.textTheme.bodyMedium!.color,
                             ),
                           ),
-                          const SizedBox(width: 30),
+                          SizedBox(width: 30),
                           Icon(
                             Icons.assignment,
                             color: theme.textTheme.bodyMedium!.color,
                           ),
-                          Text(
-                            '100',
-                            style: gilroyMedium(
-                              fontSize: 15,
-                              color: theme.textTheme.bodyMedium!.color,
+                          Obx(
+                            () => Text(
+                              amountController.hideAmount.value
+                                  ? "*****"
+                                  : "100",
+                              style: gilroyMedium(
+                                fontSize: 15,
+                                color: theme.textTheme.bodyMedium!.color,
+                              ),
                             ),
                           ),
                         ],
@@ -317,29 +322,37 @@ class _DashboardHomeState extends State<DashboardHome> {
                 ),
                 // Statistics Button-----------
                 GestureDetector(
-                  // onTap: () => Get.to(StaticticsScreen()),
+                  onTap: () => Get.to(MultiJobScreen()),
                   child: _buildDashboardButton(
-                    Icons.multiple_stop_outlined,
+                    null,
                     'Multi Job',
+                    imagePath: 'assets/car-sharing.png',
                   ),
                 ),
                 GestureDetector(
                   onTap: () => Get.to(StaticticsScreen()),
-                  child: _buildDashboardButton(Icons.settings, 'Statistics'),
+                  child: _buildDashboardButton(
+                    null,
+                    "Statistics",
+                    imagePath: 'assets/static.png',
+                  ),
                 ),
 
                 GestureDetector(
-                  onTap: () => Get.to(StaticticsScreen()),
+                  onTap: () => Get.to(FlagDownScreen()),
                   child: _buildDashboardButton(
-                    Icons.follow_the_signs_sharp,
+                    null,
                     'Flag Down',
+                    imagePath: 'assets/flagDown2.png',
                   ),
                 ),
+
                 GestureDetector(
-                  onTap: () => Get.to(StaticticsScreen()),
+                  onTap: () => Get.to(DriverPayScreen()),
                   child: _buildDashboardButton(
-                    Icons.drive_eta_rounded,
-                    'Driver Pay',
+                    null,
+                    "Driver Pay",
+                    imagePath: 'assets/driverpay.png',
                   ),
                 ),
               ],
@@ -353,6 +366,7 @@ class _DashboardHomeState extends State<DashboardHome> {
   Widget _buildDashboardButton(
     IconData? icon,
     String title, {
+    String? imagePath, // ✅ New parameter for image
     bool badge = false,
     bool check = false,
     bool active = false,
@@ -361,23 +375,24 @@ class _DashboardHomeState extends State<DashboardHome> {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: active
-                ? Colors
-                      .red // ✅ Agar active hai to red
-                : const Color.fromARGB(
-                    255,
-                    91,
-                    19,
-                    128,
-                  ), // warna default purple
+            color: active ? Colors.red : const Color.fromARGB(255, 91, 19, 128),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-            
-                Icon(icon, color: Colors.white, size: 40),
+                // ✅ Show image if given, otherwise show icon
+                if (imagePath != null)
+                  Image.asset(
+                    imagePath,
+                    height: 40,
+                    width: 40,
+                    fit: BoxFit.contain,
+                  )
+                else if (icon != null)
+                  Icon(icon, color: Colors.white, size: 40),
+
                 const SizedBox(height: 10),
                 Text(
                   title,

@@ -11,3 +11,8 @@ var groupValue = 1.obs;
 
 
 }
+
+
+class AmountController extends GetxController {
+  var hideAmount = false.obs;
+}

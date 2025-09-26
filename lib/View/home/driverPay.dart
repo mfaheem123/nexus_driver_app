@@ -3,13 +3,13 @@ import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FobSreen extends StatelessWidget {
-  const FobSreen({super.key});
+class DriverPayScreen extends StatelessWidget {
+  const DriverPayScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return  Scaffold(
+       appBar: AppBar(
         toolbarHeight: 80,
         leading: IconButton(
           onPressed: () {
@@ -23,7 +23,7 @@ class FobSreen extends StatelessWidget {
         ),
         backgroundColor: const Color.fromARGB(255, 91, 19, 128),
         title: Text(
-          'FOB',
+          'Driver Pay',
           style: gilroySemiBold(
             color: Colors.white,
             fontSize: 25,

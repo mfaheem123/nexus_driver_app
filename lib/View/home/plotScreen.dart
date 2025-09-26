@@ -12,7 +12,9 @@ class PlotScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          leading: const Icon(Icons.menu_open_rounded, size: 40),
+          leading: Column(
+            children: [const Icon(Icons.menu_open_rounded, size: 40)],
+          ),
           title: const Column(children: [Text("111"), Text("Available")]),
           actions: const [
             Padding(
@@ -91,7 +93,7 @@ class PlotScreen extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           width: 40,
                           height: 30,
-                          color:  theme.textTheme.bodyMedium!.color,
+                          color: Colors.amber,
                           child: const Text("Drv"),
                         ),
                       ),

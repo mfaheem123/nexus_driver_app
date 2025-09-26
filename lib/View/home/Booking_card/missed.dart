@@ -12,7 +12,7 @@ class MissedScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Past Booking',
+          'Missed Booking',
           style: gilroySemiBold(
             color: Colors.white,
             fontSize: 25,

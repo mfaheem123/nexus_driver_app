@@ -18,7 +18,7 @@ class MessageScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
         ),
         title: const Text(
-          "Settings",
+          "Message",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
@@ -29,21 +29,19 @@ class MessageScreen extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: SizedBox(
               height: 200,
-              child: Expanded(
-                child: TextField(
-                  maxLines: 15,
-                  decoration: InputDecoration(
-                    // label: Text("Add Templete"),
-                    hintText: "Enter your message...",
-                    hintStyle: TextStyle(
-                      color: theme.textTheme.bodyMedium!.color,
-                    ),
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    ),
-                    filled: true,
-                    fillColor:    theme.inputDecorationTheme.fillColor,
+              child: TextField(
+                maxLines: 15,
+                decoration: InputDecoration(
+                  // label: Text("Add Templete"),
+                  hintText: "Enter your message...",
+                  hintStyle: TextStyle(
+                    color: theme.textTheme.bodyMedium!.color,
                   ),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  ),
+                  filled: true,
+                  fillColor:    theme.inputDecorationTheme.fillColor,
                 ),
               ),
             ),

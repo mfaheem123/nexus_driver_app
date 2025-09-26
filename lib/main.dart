@@ -1,4 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:driver_app_alpha/Controller/navigationController.dart';
 import 'package:driver_app_alpha/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +18,7 @@ void main() async {
   ]);
   await GetStorage.init();
   Get.put(ThemeController());
+  Get.put(AmountController());
   runApp(MyApp());
 }
 

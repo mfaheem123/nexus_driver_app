@@ -1,8 +1,10 @@
 import 'package:driver_app_alpha/Component/brightness.dart';
 import 'package:driver_app_alpha/Component/textStyle.dart';
+import 'package:driver_app_alpha/Controller/navigationController.dart';
 import 'package:driver_app_alpha/View/home/Setting/message.dart';
 import 'package:driver_app_alpha/View/home/Setting/navigation_type.dart';
 import 'package:driver_app_alpha/View/home/Setting/privacyPolicy.dart';
+import 'package:driver_app_alpha/View/home/Setting/syncWidget.dart';
 import 'package:driver_app_alpha/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +18,8 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<ThemeController>();
-      final theme = Theme.of(context);
+    final AmountController amountController = Get.find();
+    final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
@@ -54,7 +57,14 @@ class SettingsScreen extends StatelessWidget {
                     children: [
                       const Icon(Icons.dark_mode_outlined, size: 30),
                       const SizedBox(width: 10),
-                      Text("Night Mode", style: TextStyle( fontWeight: FontWeight.w600,fontSize: 18, color: theme.textTheme.bodyMedium!.color,)),
+                      Text(
+                        "Night Mode",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: theme.textTheme.bodyMedium!.color,
+                        ),
+                      ),
                       const Spacer(),
                       Obx(
                         () => Switch(
@@ -92,7 +102,11 @@ class SettingsScreen extends StatelessWidget {
                         SizedBox(width: 10),
                         Text(
                           "Change Brightness",
-                          style: TextStyle( fontWeight: FontWeight.w600,fontSize: 18, color: theme.textTheme.bodyMedium!.color,),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            color: theme.textTheme.bodyMedium!.color,
+                          ),
                         ),
                       ],
                     ),
@@ -117,7 +131,11 @@ class SettingsScreen extends StatelessWidget {
                         SizedBox(width: 10),
                         Text(
                           "Add Message Template",
-                          style: TextStyle( fontWeight: FontWeight.w600,fontSize: 18, color: theme.textTheme.bodyMedium!.color,),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            color: theme.textTheme.bodyMedium!.color,
+                          ),
                         ),
                       ],
                     ),
@@ -127,17 +145,27 @@ class SettingsScreen extends StatelessWidget {
               const Divider(height: 2),
 
               // ----------------- Sync Settings -------------------------------
-              Container(
-                height: 60,
-                    color: theme.cardColor,
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Icon(Icons.settings_suggest_rounded, size: 30),
-                      SizedBox(width: 10),
-                      Text("Sync Settings", style:TextStyle( fontWeight: FontWeight.w600,fontSize: 18, color: theme.textTheme.bodyMedium!.color,)),
-                    ],
+              GestureDetector(
+                // onTap: () => Sync_Widget(),
+                child: Container(
+                  height: 60,
+                  color: theme.cardColor,
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Icon(Icons.settings_suggest_rounded, size: 30),
+                        SizedBox(width: 10),
+                        Text(
+                          "Sync Settings",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            color: theme.textTheme.bodyMedium!.color,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -148,7 +176,7 @@ class SettingsScreen extends StatelessWidget {
                 onTap: () => Get.bottomSheet(NavigationType()),
                 child: Container(
                   height: 60,
-                     color: theme.cardColor,
+                  color: theme.cardColor,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Row(
@@ -157,7 +185,11 @@ class SettingsScreen extends StatelessWidget {
                         SizedBox(width: 10),
                         Text(
                           "Navigation Type",
-                          style: TextStyle( fontWeight: FontWeight.w600,fontSize: 18, color: theme.textTheme.bodyMedium!.color,),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            color: theme.textTheme.bodyMedium!.color,
+                          ),
                         ),
                       ],
                     ),
@@ -173,14 +205,21 @@ class SettingsScreen extends StatelessWidget {
                 },
                 child: Container(
                   height: 60,
-                       color: theme.cardColor,
+                  color: theme.cardColor,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Row(
                       children: [
                         Icon(Icons.privacy_tip, size: 30),
                         SizedBox(width: 10),
-                        Text("Privacy Policy", style: TextStyle( fontWeight: FontWeight.w600,fontSize: 18, color: theme.textTheme.bodyMedium!.color,)),
+                        Text(
+                          "Privacy Policy",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            color: theme.textTheme.bodyMedium!.color,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -193,16 +232,28 @@ class SettingsScreen extends StatelessWidget {
               // ----------------- Hide Earning -------------------------------
               Container(
                 height: 60,
-                   color: theme.cardColor,
+                color: theme.cardColor,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
                       const Icon(Icons.bar_chart_rounded, size: 30),
                       SizedBox(width: 10),
-                      Text("Hide Earning", style: TextStyle( fontWeight: FontWeight.w600,fontSize: 18, color: theme.textTheme.bodyMedium!.color,)),
+                      Text(
+                        "Hide Earning",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: theme.textTheme.bodyMedium!.color,
+                        ),
+                      ),
                       const Spacer(),
-                      Switch(value: true, onChanged: (value) {}),
+                       Obx(() => Switch(
+                  value: amountController.hideAmount.value,
+                  onChanged: (value) {
+                    amountController.hideAmount.value = value;
+                  },
+                )),
                     ],
                   ),
                 ),

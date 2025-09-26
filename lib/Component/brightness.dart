@@ -23,10 +23,12 @@ class BrightnessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      
       content: Obx(
         () => Container(
-          height: 60,
-          width: 120,
+          alignment: Alignment.center,
+          height: 48,
+
           color: Colors.blueGrey.withOpacity(_controller.brightness.value),
           child: FutureBuilder<double>(
             future: ScreenBrightness.instance.application,
@@ -50,6 +52,7 @@ class BrightnessWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Slider.adaptive(
+                   
                         value: changedApplicationBrightness,
                         onChanged: (value) {
                           setApplicationBrightness(value);

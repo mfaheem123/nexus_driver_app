@@ -42,50 +42,48 @@ class Booking_Screen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 30.0),
-        child: Expanded(
-          child: GridView.builder(
-            scrollDirection: Axis.vertical,
-            physics: const BouncingScrollPhysics(),
-            shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 15,
-              mainAxisSpacing: 15,
-            ),
-            itemCount: 6,
-            itemBuilder: (context, index) {
-              return Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  color: theme.cardColor,
-                ),
-                // alignment: Alignment.center,
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    final tappedText = CardText.allText[index];
-                    if (tappedText == "Present") {
-                      Get.to(() => const PresentScreen());
-                    } else if (tappedText == "Past") {
-                      Get.to(() => PastScreen());
-                    } else if (tappedText == "Future") {
-                      Get.to(() => const FutureScreen());
-                    } else if (tappedText == "FOB") {
-                      Get.to(() => const FobSreen());
-                    } else if (tappedText == "Missed") {
-                      Get.to(() => const MissedScreen());
-                    } else if (tappedText == "Declined") {
-                      Get.to(() => const DeclinedScreen());
-                    }
-                  },
-                  child: CardButton(
-                    CardText.allText[index],
-                    CardIcons.allIcons[index],
-                  ),
-                ),
-              );
-            },
+        child: GridView.builder(
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics(),
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 15,
+            mainAxisSpacing: 15,
           ),
+          itemCount: 6,
+          itemBuilder: (context, index) {
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                color: theme.cardColor,
+              ),
+              // alignment: Alignment.center,
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  final tappedText = CardText.allText[index];
+                  if (tappedText == "Present") {
+                    Get.to(() => const PresentScreen());
+                  } else if (tappedText == "Past") {
+                    Get.to(() => PastScreen());
+                  } else if (tappedText == "Future") {
+                    Get.to(() => const FutureScreen());
+                  } else if (tappedText == "FOB") {
+                    Get.to(() => const FobSreen());
+                  } else if (tappedText == "Missed") {
+                    Get.to(() => const MissedScreen());
+                  } else if (tappedText == "Declined") {
+                    Get.to(() => const DeclinedScreen());
+                  }
+                },
+                child: CardButton(
+                  CardText.allText[index],
+                  CardIcons.allIcons[index],
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

@@ -58,13 +58,13 @@ class SelectCompany extends StatelessWidget {
                       return StatefulBuilder(
                         builder: (context, setState) {
                           return Padding(
-                            padding: const EdgeInsets.all(16),
+                            padding: EdgeInsets.all(16),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 TextField(
                                   controller: searchController,
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     contentPadding: EdgeInsets.symmetric(
                                       vertical: 15,
                                       horizontal: 100,
@@ -117,14 +117,17 @@ class SelectCompany extends StatelessWidget {
                   );
                 }
               },
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: theme.primaryColor,
                 contentPadding: EdgeInsets.symmetric(
                   vertical: 15,
                   horizontal: 60,
                 ),
                 hintText: 'Authentication Token',
               ),
-              style: theme.textTheme.bodyMedium!.copyWith(fontSize: 22),
+              style: TextStyle(fontSize: 22, color: Colors.white),
+              // style: theme.textTheme.bodyMedium!.copyWith(fontSize: 22),
             ),
 
             const SizedBox(height: 20),
