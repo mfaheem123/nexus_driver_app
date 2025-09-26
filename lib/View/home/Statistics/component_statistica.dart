@@ -52,7 +52,7 @@ class ListOfCash extends StatelessWidget {
                     Spacer(),
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 20, right: 5.0),
+                      padding: const EdgeInsets.only(top: 20, right: 12.0),
                       child: Column(
                         children: [
                           Text(

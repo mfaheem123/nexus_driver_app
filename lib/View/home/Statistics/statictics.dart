@@ -162,20 +162,29 @@ class StaticticsScreen extends StatelessWidget {
                         ),
                         const SizedBox(width: 10.0),
                         Container(
+                          alignment: Alignment.center,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                           ),
                           width: MediaQuery.of(context).size.width / 2.3,
-                          height: 40.0,
+                          height: 39.0,
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: "All Type",
+                              hintStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
 
                               filled: true,
                               fillColor: Colors.white,
                               suffixIcon: IconButton(
                                 onPressed: () {},
-                                icon: const Icon(Icons.arrow_drop_down),
+                                icon: const Icon(
+                                  Icons.arrow_drop_down,
+                                  size: 25,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
@@ -183,7 +192,7 @@ class StaticticsScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 5.0),
-                    const Divider(height: 3.0),
+                    const Divider(height: 12.0, color: Colors.white),
                     const SizedBox(height: 15.0),
                     // -----------  Today or Yesterday Section----------------
                     Row(
@@ -221,7 +230,7 @@ class StaticticsScreen extends StatelessWidget {
 
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.calendar_month,
                               size: 30.0,
                               color: Colors.white,
@@ -288,7 +297,7 @@ class StaticticsScreen extends StatelessWidget {
 
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.calendar_month,
                               size: 30.0,
                               color: Colors.white,

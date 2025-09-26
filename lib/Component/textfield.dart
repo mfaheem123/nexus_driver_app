@@ -25,6 +25,7 @@ class CustomTextFieldDy extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         prefixIcon: prefixIcon != null
             ? Icon(prefixIcon, color: Colors.black)
             : null,
