@@ -1,7 +1,7 @@
 import 'package:driver_app_alpha/Component/textStyle.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/ShowAmount/showamount.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'showamount.dart';
 
 class FareMeterScreen extends StatelessWidget {
   const FareMeterScreen({super.key});

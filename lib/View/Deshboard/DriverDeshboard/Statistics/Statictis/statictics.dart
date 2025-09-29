@@ -2,7 +2,7 @@ import 'package:driver_app_alpha/Component/color.dart';
 import 'package:driver_app_alpha/Component/customButton.dart';
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:driver_app_alpha/Component/textfield.dart';
-import 'package:driver_app_alpha/View/home/Statistics/component_statistica.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Statistics/Component/component_statistica.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -107,7 +107,7 @@ class StaticticsScreen extends StatelessWidget {
                             SizedBox(
                               width: width / 2.4,
                               height: 38.0,
-                              child: const CustomTextFieldDy(
+                              child:  CustomTextFieldDy(
                                 hintText: "Select Start Date",
                               ),
                             ),
@@ -117,7 +117,7 @@ class StaticticsScreen extends StatelessWidget {
                             SizedBox(
                               width: width / 2.4,
                               height: 38.0,
-                              child: const CustomTextFieldDy(
+                              child:  CustomTextFieldDy(
                                 hintText: "Select End Date",
                               ),
                             ),

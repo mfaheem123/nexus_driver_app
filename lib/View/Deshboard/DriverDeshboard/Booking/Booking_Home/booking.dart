@@ -1,12 +1,11 @@
 import 'package:driver_app_alpha/Component/color.dart';
 import 'package:driver_app_alpha/Component/textStyle.dart';
-import 'package:driver_app_alpha/View/home/Booking_card/declined.dart';
-import 'package:driver_app_alpha/View/home/Booking_card/fob.dart';
-import 'package:driver_app_alpha/View/home/Booking_card/future.dart';
-import 'package:driver_app_alpha/View/home/Booking_card/missed.dart';
-import 'package:driver_app_alpha/View/home/Booking_card/past.dart';
-import 'package:driver_app_alpha/View/home/Booking_card/present.dart';
-import 'package:driver_app_alpha/theme/theme.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/Booking_Widget/declined.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/Booking_Widget/fob.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/Booking_Widget/future.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/Booking_Widget/missed.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/Booking_Widget/past.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/Booking_Widget/present.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -99,7 +98,8 @@ class Booking_Screen extends StatelessWidget {
           Text(
             titile,
             style: gilroySemiBold(
-              color: const Color.fromARGB(255, 160, 160, 160),
+              color: const Color.fromARGB(255, 87, 80, 80),
+              fontWeight: FontWeight.bold,
             ),
           ),
           Divider(

@@ -18,6 +18,7 @@ abstract class Routes {
   static const BookingScreen = _Paths.BookingScreen;
   static const SettingsScreen = _Paths.SettingsScreen;
   static const PlotScreen = _Paths.PlotScreen;
+  static const DeshBoardMessageScreen = _Paths.DeshBoardMessageScreen;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const BookingScreen = '/BookingScreen';
   static const SettingsScreen = '/SettingsScreen';
   static const PlotScreen = '/PlotScreen';
+  static const DeshBoardMessageScreen = '/MessageScreen';
 }

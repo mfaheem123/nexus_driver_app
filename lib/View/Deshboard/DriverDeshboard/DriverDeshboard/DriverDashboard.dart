@@ -1,14 +1,14 @@
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:driver_app_alpha/Controller/navigationController.dart';
 import 'package:driver_app_alpha/Routes/app_pages.dart';
-import 'package:driver_app_alpha/View/home/Setting/list.dart';
-import 'package:driver_app_alpha/View/home/Statistics/statictics.dart';
-import 'package:driver_app_alpha/View/home/driverPay.dart';
-import 'package:driver_app_alpha/View/home/flagDown.dart';
-import 'package:driver_app_alpha/View/home/jobDetailsScreen.dart';
-import 'package:driver_app_alpha/View/home/multiJob.dart';
-import 'package:driver_app_alpha/View/home/my_earning.dart';
-import 'package:driver_app_alpha/View/home/profileScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/BottomScreens/Job/jobDetailsScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/BottomScreens/MyEarning/my_earning.dart';
+import 'package:driver_app_alpha/View/Deshboard/BottomScreens/ProfileScreen/profileScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverPay/driverPay.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/FlagDown/flagDown.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/MultiJobs/multiJob.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/BookingList/list.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Statistics/Statictis/statictics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -348,7 +348,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                 ),
 
                 GestureDetector(
-                  onTap: () => Get.to(DriverPayScreen()),
+                  onTap: () => Get.to(DriverPaymentScreen()),
                   child: _buildDashboardButton(
                     null,
                     "Driver Pay",

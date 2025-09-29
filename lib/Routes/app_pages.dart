@@ -1,30 +1,29 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:driver_app_alpha/View/Auth/LoginScreen.dart';
 import 'package:driver_app_alpha/View/Auth/TokenScree.dart';
 import 'package:driver_app_alpha/View/Auth/selectCompany.dart';
-import 'package:driver_app_alpha/View/home/DriverDashboard.dart';
-import 'package:driver_app_alpha/View/home/JobInvitationScreen.dart';
-import 'package:driver_app_alpha/View/home/RideInfoScreen.dart';
-import 'package:driver_app_alpha/View/home/Setting/list.dart';
-import 'package:driver_app_alpha/View/home/booking.dart';
-import 'package:driver_app_alpha/View/home/fareMeterScreen.dart';
-import 'package:driver_app_alpha/View/home/jobAlert.dart';
-import 'package:driver_app_alpha/View/home/jobDetailsScreen.dart';
-import 'package:driver_app_alpha/View/home/notification.dart';
-import 'package:driver_app_alpha/View/home/plotScreen.dart';
-import 'package:driver_app_alpha/View/home/profileScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/BottomScreens/Job/JobInvitationScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/BottomScreens/Job/jobAlert.dart';
+import 'package:driver_app_alpha/View/Deshboard/BottomScreens/Job/jobDetailsScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/BottomScreens/ProfileScreen/profileScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/Booking_Home/booking.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/ShowAmount/showamount.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/fareMeterScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/BreakScreen/breakScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverDeshboard/DriverDashboard.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverDeshboard/notification.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Message/message.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/PlotScreen/plotScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/BookingList/list.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/Component/message.dart';
+import 'package:driver_app_alpha/View/Deshboard/RideInfoScreen.dart';
 import 'package:get/get.dart';
-
-import '../View/home/breakScreen.dart';
-import '../View/home/showamount.dart';
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  // static const initial = Routes.driverDashboard;
-  static const initial = Routes.SelectCompany;
+  static const initial = Routes.DeshBoardMessageScreen;
+  // static const initial = Routes.SelectCompany;
 
   static final routes = [
     GetPage(name: _Paths.loginScreen, page: () => LoginScreen()),
@@ -49,5 +48,6 @@ class AppPages {
     GetPage(name: _Paths.BookingScreen, page: () => Booking_Screen()),
     GetPage(name: _Paths.SettingsScreen, page: () => SettingsScreen()),
     GetPage(name: _Paths.PlotScreen, page: () => PlotScreen()),
+    GetPage(name: _Paths.DeshBoardMessageScreen, page: () => DeshBoardMessageScreen()),
   ];
 }

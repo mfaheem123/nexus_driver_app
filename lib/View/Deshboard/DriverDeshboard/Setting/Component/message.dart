@@ -2,8 +2,8 @@ import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MessageScreen extends StatelessWidget {
-  const MessageScreen({super.key});
+class SettingsMessageScreen extends StatelessWidget {
+  const SettingsMessageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

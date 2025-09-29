@@ -1,14 +1,11 @@
 import 'package:driver_app_alpha/Component/brightness.dart';
-import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:driver_app_alpha/Controller/navigationController.dart';
-import 'package:driver_app_alpha/View/home/Setting/message.dart';
-import 'package:driver_app_alpha/View/home/Setting/navigation_type.dart';
-import 'package:driver_app_alpha/View/home/Setting/privacyPolicy.dart';
-import 'package:driver_app_alpha/View/home/Setting/syncWidget.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/Component/message.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/Component/navigation_type.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/Component/privacyPolicy.dart';
 import 'package:driver_app_alpha/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -118,7 +115,7 @@ class SettingsScreen extends StatelessWidget {
               // ----------------- Add Message  -------------------------------
               GestureDetector(
                 onTap: () {
-                  Get.to(const MessageScreen());
+                  Get.to(const SettingsMessageScreen());
                 },
                 child: Container(
                   height: 60,
@@ -248,12 +245,14 @@ class SettingsScreen extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                       Obx(() => Switch(
-                  value: amountController.hideAmount.value,
-                  onChanged: (value) {
-                    amountController.hideAmount.value = value;
-                  },
-                )),
+                      Obx(
+                        () => Switch(
+                          value: amountController.hideAmount.value,
+                          onChanged: (value) {
+                            amountController.hideAmount.value = value;
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),

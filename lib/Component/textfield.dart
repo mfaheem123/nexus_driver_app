@@ -7,8 +7,13 @@ class CustomTextFieldDy extends StatelessWidget {
   final bool obscureText;
   final TextEditingController? controller;
   final VoidCallback? onPressed;
+  final Color? color;
+  final Color? Textcolor;
+  final bool showBorder;
+  double borderRadius;
+  final Color? borderColor;
 
-  const CustomTextFieldDy({
+  CustomTextFieldDy({
     super.key,
     this.onPressed,
     required this.hintText,
@@ -16,6 +21,11 @@ class CustomTextFieldDy extends StatelessWidget {
     this.sufixIcon,
     this.obscureText = false,
     this.controller,
+    this.color,
+    this.borderRadius = 15,
+    this.borderColor,
+    this.Textcolor,
+    this.showBorder = false,
   });
 
   @override
@@ -25,31 +35,50 @@ class CustomTextFieldDy extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        hintStyle: TextStyle(
+          color: Textcolor ?? Colors.black54,
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
         prefixIcon: prefixIcon != null
-            ? Icon(prefixIcon, color: Colors.black)
+            ? Icon(prefixIcon, color: color, size: 25)
             : null,
         suffix: sufixIcon != null
             ? IconButton(
+         
                 onPressed: onPressed,
-                icon: Icon(sufixIcon, color: Colors.black, size: 30),
+                icon: Icon(sufixIcon, color: color, size: 30),
               )
             : null,
         filled: true,
         fillColor: Colors.grey.shade100,
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 0,
-          horizontal: 2.0,
+
+        isDense: true,
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 8, //
+          horizontal: 10,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5.0),
-          borderSide: const BorderSide(color: Colors.grey, width: 1.5),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(6.0),
-          borderSide: const BorderSide(color: Colors.black, width: 2),
-        ),
+
+        enabledBorder: showBorder
+            ? OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius),
+                borderSide: BorderSide(
+                  color: borderColor ?? Colors.black,
+               
+                ),
+              )
+            : InputBorder.none,
+
+        focusedBorder: showBorder
+            ? OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius),
+                borderSide: BorderSide(
+                  color: borderColor ?? Colors.black,
+                  width: 1,
+                ),
+              )
+            : InputBorder.none,
       ),
     );
   }
-}
+  }

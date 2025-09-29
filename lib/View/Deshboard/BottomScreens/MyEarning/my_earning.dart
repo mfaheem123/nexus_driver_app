@@ -1,9 +1,7 @@
 import 'package:driver_app_alpha/Component/color.dart';
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class MyEarningsScreen extends StatelessWidget {
   const MyEarningsScreen({super.key});
@@ -14,18 +12,18 @@ class MyEarningsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 91, 19, 128),
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: const Icon(Icons.arrow_back),
-        ),
-        title: Text(
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Get.back();
+        //   },
+        //   icon: const Icon(Icons.arrow_back, color: Colors.white, size: 25),
+        // ),
+        title: const Text(
           "Earning",
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.w600,
-            color: theme.textTheme.bodyMedium!.color,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
