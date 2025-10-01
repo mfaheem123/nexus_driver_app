@@ -1,6 +1,7 @@
 import 'package:driver_app_alpha/Component/color.dart';
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PlotScreen extends StatelessWidget {
   const PlotScreen({super.key});
@@ -12,8 +13,11 @@ class PlotScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          leading: Column(
-            children: [const Icon(Icons.menu_open_rounded, size: 40)],
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back, size: 40),
           ),
           title: const Column(children: [Text("111"), Text("Available")]),
           actions: const [

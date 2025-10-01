@@ -14,7 +14,6 @@ import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverDeshboard/
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Message/message.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/PlotScreen/plotScreen.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/BookingList/list.dart';
-import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/Component/message.dart';
 import 'package:driver_app_alpha/View/Deshboard/RideInfoScreen.dart';
 import 'package:get/get.dart';
 part 'app_routes.dart';
@@ -22,8 +21,8 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.DeshBoardMessageScreen;
-  // static const initial = Routes.SelectCompany;
+  // static const initial = Routes.DeshBoardMessageScreen;
+  static const initial = Routes.SelectCompany;
 
   static final routes = [
     GetPage(name: _Paths.loginScreen, page: () => LoginScreen()),
@@ -48,6 +47,9 @@ class AppPages {
     GetPage(name: _Paths.BookingScreen, page: () => Booking_Screen()),
     GetPage(name: _Paths.SettingsScreen, page: () => SettingsScreen()),
     GetPage(name: _Paths.PlotScreen, page: () => PlotScreen()),
-    GetPage(name: _Paths.DeshBoardMessageScreen, page: () => DeshBoardMessageScreen()),
+    GetPage(
+      name: _Paths.DeshBoardMessageScreen,
+      page: () => DeshBoardMessageScreen(),
+    ),
   ];
 }

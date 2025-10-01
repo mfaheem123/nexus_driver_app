@@ -1,3 +1,4 @@
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverDeshboard/DriverDashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,27 +7,23 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: theme
-          .scaffoldBackgroundColor, // yha pr color hai -------------------------
+      backgroundColor: const Color(0xFF5A287D),
       body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 40),
             // Profile Picture with Camera Icon
-            Stack(
+            const Stack(
               alignment: Alignment.bottomRight,
               children: [
                 CircleAvatar(
                   radius: 64,
-                  backgroundColor: Colors
-                      .green, // yha pr color hai -------------------------
+                  backgroundColor: Colors.green,
                   child: CircleAvatar(
                     radius: 60,
                     backgroundImage: AssetImage('assets/profile.jpg'),
-                    backgroundColor: theme
-                        .scaffoldBackgroundColor, // yha pr color hai -----------------------------
+                    backgroundColor: Colors.white,
                   ),
                 ),
                 Positioned(
@@ -34,45 +31,32 @@ class ProfileScreen extends StatelessWidget {
                   right: 4,
                   child: CircleAvatar(
                     radius: 15,
-                    backgroundColor: Colors
-                        .white, // yha pr color hai -----------------------------
+                    backgroundColor: Colors.white,
                     child: Icon(
                       Icons.camera_alt,
                       size: 16,
                       color: Colors.black,
-                    ), // yha pr color hai --------------
+                    ),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 15),
-            Text(
+            const Text(
               "Marceline Anderson",
               style: TextStyle(
-                color: theme
-                    .textTheme
-                    .bodyMedium!
-                    .color, // yha pr color hai ---------------------------
+                color: Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 5),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.location_on,
-                  size: 16,
-                  color: Colors.greenAccent,
-                ), // yha pr color hai --------------------------
+                Icon(Icons.location_on, size: 16, color: Colors.greenAccent),
                 SizedBox(width: 5),
-                Text(
-                  "Central London",
-                  style: TextStyle(
-                    color: theme.textTheme.bodyMedium!.color,
-                  ), // yha pr color hai ------------------------------------
-                ),
+                Text("Central London", style: TextStyle(color: Colors.white70)),
               ],
             ),
             const SizedBox(height: 25),
@@ -82,12 +66,10 @@ class ProfileScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 133, 132, 132).withOpacity(
-                  0.1,
-                ), // yha pr color hai --------------------------
+                color: Colors.white.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _ProfileInfoItem(
@@ -123,8 +105,7 @@ class ProfileScreen extends StatelessWidget {
                   Text(
                     "View Document",
                     style: TextStyle(
-                      color: Colors
-                          .amber, // yha pr color hai ------------------------
+                      color: Colors.amber,
                       fontWeight: FontWeight.w500,
                       fontSize: 15,
                     ),
@@ -135,30 +116,26 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 30),
 
             // Go Back Button
-            SizedBox(
-              width: 180,
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.back();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors
-                      .green, // yha pr color hai ---------------------------------
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                ),
-                child: Text(
-                  "Go Back",
-                  style: TextStyle(
-                    color: theme.textTheme.bodyMedium!.color,
-                    fontSize: 16,
-                  ), // yha pr color hai ------------------------------------
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
+            // SizedBox(
+            //   width: 180,
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       Get.to(DriverDashboard());
+            //     },
+            //     style: ElevatedButton.styleFrom(
+            //       backgroundColor: Colors.green,
+            //       shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(30),
+            //       ),
+            //       padding: const EdgeInsets.symmetric(vertical: 15),
+            //     ),
+            //     child: const Text(
+            //       "Go Back",
+            //       style: TextStyle(color: Colors.white, fontSize: 16),
+            //     ),
+            //   ),
+            // ),
+            // const SizedBox(height: 30),
           ],
         ),
       ),
@@ -171,34 +148,31 @@ class _ProfileInfoItem extends StatelessWidget {
   final String value;
   final String? flagEmoji;
 
-  _ProfileInfoItem({required this.title, required this.value, this.flagEmoji});
+  const _ProfileInfoItem({
+    required this.title,
+    required this.value,
+    this.flagEmoji,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: RichText(
         text: TextSpan(
           children: [
             TextSpan(
               text: "$title\n",
-              style: TextStyle(
-                color: theme
-                    .textTheme
-                    .bodyMedium!
-                    .color, // yha pr color hai -----------------------
+              style: const TextStyle(
+                color: Colors.white,
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
               ),
             ),
             TextSpan(
               text: flagEmoji != null ? "$flagEmoji $value" : value,
-              style: TextStyle(
-                color: theme
-                    .textTheme
-                    .bodyMedium!
-                    .color, // yha pr color hai ---------------------------
+              style: const TextStyle(
+                color: Colors.white70,
 
                 fontSize: 15,
                 fontWeight: FontWeight.bold,

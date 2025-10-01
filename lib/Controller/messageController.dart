@@ -10,3 +10,10 @@ class ChatController extends GetxController {
     text.value = ""; 
   }
 }
+
+
+
+class WayController extends GetxController{
+    RxBool viaLocation = false.obs;
+
+}

@@ -1,7 +1,6 @@
 import 'package:driver_app_alpha/Component/color.dart';
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MyEarningsScreen extends StatelessWidget {
   const MyEarningsScreen({super.key});
@@ -11,13 +10,8 @@ class MyEarningsScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 91, 19, 128),
-        // leading: IconButton(
-        //   onPressed: () {
-        //     Get.back();
-        //   },
-        //   icon: const Icon(Icons.arrow_back, color: Colors.white, size: 25),
-        // ),
         title: const Text(
           "Earning",
           style: TextStyle(
@@ -30,12 +24,13 @@ class MyEarningsScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.filter_list_outlined),
+            icon: const Icon(Icons.filter_list_outlined, color: Colors.white),
           ),
         ],
       ),
       body: Column(
         children: [
+          const SizedBox(height: 15),
           Text(
             "Today, 19,Sep",
             style: TextStyle(color: theme.textTheme.bodyMedium!.color),
@@ -48,7 +43,7 @@ class MyEarningsScreen extends StatelessWidget {
               color: theme.textTheme.bodyMedium!.color,
             ),
           ),
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
           InkWell(
             onTap: () {},
             child: const CircleAvatar(
@@ -57,7 +52,7 @@ class MyEarningsScreen extends StatelessWidget {
                   .dividerColor, // yha pr color hai --------------------------------------
             ),
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Row(
@@ -82,21 +77,21 @@ class MyEarningsScreen extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             height: 1,
             color: DynamicColors.dividerColor,
           ), // yha pr color hai ------------------------
 
-          Padding(
-            padding: const EdgeInsets.only(top: 15.0),
+          const Padding(
+            padding: EdgeInsets.only(top: 15.0),
             child: Icon(Icons.location_on),
           ),
           Text(
             "Jobs",
             style: gilroyLight(color: theme.textTheme.bodyMedium!.color),
           ), // yha pr color hai -----------------------
-          Padding(
-            padding: const EdgeInsets.only(top: 15.0),
+          const Padding(
+            padding: EdgeInsets.only(top: 15.0),
             child: Divider(
               height: 1,
               color: DynamicColors.dividerColor,
@@ -117,7 +112,7 @@ class MyEarningsScreen extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   "£75.80",
                   style: gilroyLight(
@@ -147,7 +142,7 @@ class MyEarningsScreen extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   "£75.80",
                   style: gilroyLight(
@@ -177,7 +172,7 @@ class MyEarningsScreen extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   "£75.80",
                   style: gilroyLight(
@@ -189,7 +184,7 @@ class MyEarningsScreen extends StatelessWidget {
               ],
             ),
           ),
-          Divider(height: 1, color: DynamicColors.dividerColor),
+          const Divider(height: 1, color: DynamicColors.dividerColor),
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Row(
@@ -201,7 +196,7 @@ class MyEarningsScreen extends StatelessWidget {
                     color: theme.textTheme.bodyMedium!.color,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   "£75.80",
                   style: gilroyBold(

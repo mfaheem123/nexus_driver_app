@@ -177,7 +177,7 @@ class _DriverPaymentScreenState extends State<DriverPaymentScreen> {
             // Pay Now Button
             SizedBox(
               width: double.infinity,
-              height: 45,
+              height: 60,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.green),

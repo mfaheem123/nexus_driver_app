@@ -13,9 +13,9 @@ class TokenScreen extends StatelessWidget {
 
       body: Stack(
         children: [
-          Opacity(opacity: 0.2),
+          const Opacity(opacity: 0.2),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/Tokenbg.png'),
                 fit: BoxFit.cover,
@@ -40,7 +40,7 @@ class TokenScreen extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () => Navigator.pop(context),
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_back,
                           color: Colors.white,
                           size: 30,
@@ -68,7 +68,7 @@ class TokenScreen extends StatelessWidget {
                           fillColor: Colors.white,
                           hintText: 'NTG 000000',
                           hintStyle: gilroyMedium(color: Colors.grey),
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                             vertical: 20,
                             horizontal: 10,
                           ),
@@ -77,14 +77,14 @@ class TokenScreen extends StatelessWidget {
                             borderSide: BorderSide.none,
                           ),
                         ),
-                        style: TextStyle(fontSize: 22),
+                        style: const TextStyle(fontSize: 22),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Forget token number ?',
+                            'Forget token number?',
                             style: gilroyMedium(
                               color: Colors.white70,
                               fontSize: 15,
@@ -92,6 +92,7 @@ class TokenScreen extends StatelessWidget {
                           ),
                           Text(
                             'ASK ADMIN',
+
                             style: gilroyMedium(
                               color: Colors.white,
                               fontSize: 15,
@@ -100,7 +101,7 @@ class TokenScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 40),
+                      const SizedBox(height: 40),
                       Center(
                         child: ElevatedButton(
                           onPressed: () {
@@ -108,7 +109,7 @@ class TokenScreen extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.green,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               horizontal: 90,
                               vertical: 19,
                             ),
@@ -126,7 +127,7 @@ class TokenScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 40),
+                      const SizedBox(height: 40),
                     ],
                   ),
                 ),

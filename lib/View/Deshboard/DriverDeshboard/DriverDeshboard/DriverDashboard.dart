@@ -23,9 +23,9 @@ class _DriverDashboardState extends State<DriverDashboard> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    DashboardHome(), // We'll move the dashboard UI into a separate widget
-    JobDetailsScreen(),
-    MyEarningsScreen(),
+    DashboardHome(),
+    const JobDetailsScreen(),
+    const MyEarningsScreen(),
     // Center(child: Text('Your Trips')),
     const ProfileScreen(),
   ];
@@ -71,7 +71,7 @@ class _DriverDashboardState extends State<DriverDashboard> {
 
 // 👇 Moved your dashboard UI to a separate widget
 class DashboardHome extends StatefulWidget {
-  DashboardHome({super.key});
+  const DashboardHome({super.key});
 
   @override
   State<DashboardHome> createState() => _DashboardHomeState();
@@ -88,8 +88,13 @@ class _DashboardHomeState extends State<DashboardHome> {
     return Column(
       children: [
         Container(
-          color: Color.fromARGB(255, 91, 19, 128),
-          padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 15),
+          color: const Color.fromARGB(255, 91, 19, 128),
+          padding: const EdgeInsets.only(
+            top: 15,
+            left: 20,
+            right: 20,
+            bottom: 15,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -120,12 +125,19 @@ class _DashboardHomeState extends State<DashboardHome> {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.only(
+            top: 10,
+            bottom: 10,
+            left: 17,
+            right: 17,
+          ),
           decoration: BoxDecoration(
             color: theme.cardColor,
 
             ///-----------------------------------------------
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
           ),
           child: Column(
             children: [
@@ -156,7 +168,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                       ),
                       Row(
                         children: [
-                          Icon(Icons.badge_outlined),
+                          const Icon(Icons.badge_outlined),
                           Text(
                             '1',
                             style: gilroyMedium(
@@ -164,7 +176,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                               color: theme.textTheme.bodyMedium!.color,
                             ),
                           ),
-                          SizedBox(width: 30),
+                          const SizedBox(width: 30),
                           Icon(
                             Icons.assignment,
                             color: theme.textTheme.bodyMedium!.color,
@@ -236,7 +248,10 @@ class _DashboardHomeState extends State<DashboardHome> {
               ),
               const SizedBox(height: 20),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 15,
+                ),
                 decoration: BoxDecoration(
                   color: theme
                       .inputDecorationTheme
@@ -271,10 +286,17 @@ class _DashboardHomeState extends State<DashboardHome> {
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 5.0),
             child: GridView.count(
               crossAxisCount: 2,
-              crossAxisSpacing: 30,
-              mainAxisSpacing: 25,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 15,
               children: [
-                _buildDashboardButton(Icons.email, 'Messages', badge: true),
+                GestureDetector(
+                  onTap: () => Get.toNamed('/MessageScreen'),
+                  child: _buildDashboardButton(
+                    Icons.email,
+                    'Messages',
+                    badge: true,
+                  ),
+                ),
                 GestureDetector(
                   onTap: () => Get.toNamed(Routes.BookingScreen),
                   child: _buildDashboardButton(Icons.task_alt, 'Booking'),
@@ -294,7 +316,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Get.to(SettingsScreen()),
+                  onTap: () => Get.to(const SettingsScreen()),
                   child: _buildDashboardButton(Icons.settings, 'Settings'),
                 ),
                 GestureDetector(
@@ -322,7 +344,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                 ),
                 // Statistics Button-----------
                 GestureDetector(
-                  onTap: () => Get.to(MultiJobScreen()),
+                  onTap: () => Get.to(const MultiJobScreen()),
                   child: _buildDashboardButton(
                     null,
                     'Multi Job',
@@ -330,7 +352,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Get.to(StaticticsScreen()),
+                  onTap: () => Get.to(const StaticticsScreen()),
                   child: _buildDashboardButton(
                     null,
                     "Statistics",
@@ -339,7 +361,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                 ),
 
                 GestureDetector(
-                  onTap: () => Get.to(FlagDownScreen()),
+                  onTap: () => Get.to(const FlagDownScreen()),
                   child: _buildDashboardButton(
                     null,
                     'Flag Down',
@@ -348,7 +370,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                 ),
 
                 GestureDetector(
-                  onTap: () => Get.to(DriverPaymentScreen()),
+                  onTap: () => Get.to(const DriverPaymentScreen()),
                   child: _buildDashboardButton(
                     null,
                     "Driver Pay",

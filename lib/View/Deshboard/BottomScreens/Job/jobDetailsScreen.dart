@@ -173,12 +173,13 @@ class JobDetailsScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 91, 19, 128),
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-        ),
+        automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Get.back();
+        //   },
+        //   icon: const Icon(Icons.arrow_back, color: Colors.white),
+        // ),
       ),
       body: Column(
         children: [

@@ -54,7 +54,7 @@ class DropDownClass extends StatelessWidget {
               dropdownColor: _dropDownColor ?? Colors.white,
               decoration: _inputDecoration ??
                   (_isPrefixIcon == false
-                      ? InputDecoration(
+                      ? const InputDecoration(
                           border: InputBorder.none,
                           fillColor: Colors.white,
                           filled: true)

@@ -1,7 +1,5 @@
+import 'package:driver_app_alpha/Component/addsuggestion.dart';
 import 'package:driver_app_alpha/Controller/messageController.dart';
-import 'package:flutter/material.dart';
-// ControllerMessage
-import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,10 +9,21 @@ class ControllerMessage extends StatelessWidget {
   final ChatController controller = Get.put(ChatController());
   final TextEditingController inputController = TextEditingController();
 
+  void _openSuggestionSheet() {
+    Get.bottomSheet(
+      AddsuggestionWidget(
+        onSelect: (value) {
+          inputController.text = value; 
+          controller.text.value = value;
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
- 
       body: Column(
         children: [
           Expanded(
@@ -51,16 +60,23 @@ class ControllerMessage extends StatelessWidget {
           ),
 
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-            color: Colors.grey.shade200,
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+            color: theme.cardColor,
             child: Row(
               children: [
+                IconButton(
+                  onPressed: () {
+                    _openSuggestionSheet();
+                  },
+                  icon: const Icon(Icons.add, fontWeight: FontWeight.bold),
+                ),
                 Expanded(
                   child: TextField(
                     controller: inputController,
                     onChanged: (val) => controller.text.value = val,
                     decoration: const InputDecoration(
                       hintText: "Write a message...",
+                                    hintStyle: TextStyle(color: Colors.black),
                       border: InputBorder.none,
                     ),
                   ),

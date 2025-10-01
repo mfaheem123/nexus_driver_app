@@ -1,117 +1,123 @@
+import 'package:driver_app_alpha/Controller/osm_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
+class OpenStreetMapScreen extends StatelessWidget {
+  OpenStreetMapScreen({super.key});
 
-class OpenStreetMapScreen extends StatefulWidget {
-  const OpenStreetMapScreen({super.key});
-
-  @override
-  State<OpenStreetMapScreen> createState() => _OpenStreetMapScreenState();
-}
-
-class _OpenStreetMapScreenState extends State<OpenStreetMapScreen> {
-  LatLng? currentLatLng;
-  String locationText = "Fetching location...";
-
-  @override
-  void initState() {
-    super.initState();
-    _getCurrentLocation();
-  }
-
-  Future<void> _getCurrentLocation() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    // Location service check
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      setState(() {
-        locationText = "Location services are disabled.";
-      });
-      return;
-    }
-
-    // Permission check
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        setState(() {
-          locationText = "Location permissions are denied.";
-        });
-        return;
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      setState(() {
-        locationText = "Location permissions are permanently denied.";
-      });
-      return;
-    }
-
-    // Get current position
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-
-    setState(() {
-      currentLatLng = LatLng(position.latitude, position.longitude);
-      locationText =
-          "Latitude: ${position.latitude}, Longitude: ${position.longitude}";
-    });
-  }
+  final MapControllerX controller = Get.put(MapControllerX());
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
-   
       body: Column(
         children: [
+          // 🔹 Current pickup address row
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 10, top: 40),
+          //   child: Container(
+          //     alignment: Alignment.center,
+          //     child: Row(
+          //       children: [
+          //         const Icon(Icons.location_on, color: Colors.red),
+          //         const SizedBox(width: 15),
+          //         Expanded(
+          //           child: Obx(
+          //             () => Text(
+          //               controller.locationText.value,
+          //               style: gilroyBold(
+          //                 color: Colors.blue,
+          //                 fontWeight: FontWeight.bold,
+          //               ),
+          //               maxLines: 2,
+          //               softWrap: true,
+          //               overflow: TextOverflow.ellipsis,
+          //             ),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+
+          // const SizedBox(height: 20),
+
+          // 🔹 Drop-off input field
+          // SizedBox(
+          //   height: 50,
+          //   width: width,
+          //   child: CustomTextFieldDy(
+          //     showBorder: false,
+          //     hintText: "Drop off",
+          //     prefixIcon: Icons.location_on,
+          //     color: Colors.red,
+          //     onSubmitted: (value) {
+          //       controller.searchDropOff(value); // ✅ address → marker
+          //     },
+          //   ),
+          // ),
+
+          // const SizedBox(height: 10),
+
+          // 🔹 Map area
           Expanded(
-            child: currentLatLng == null
+            child: Obx(() => controller.currentLatLng.value == null
                 ? const Center(child: CircularProgressIndicator())
                 : FlutterMap(
                     options: MapOptions(
-                      initialCenter: currentLatLng!,
+                      initialCenter:
+                          controller.currentLatLng.value ?? LatLng(24.8607, 67.0011),
                       initialZoom: 15,
+                      onTap: (tapPos, point) {
+                        controller.updateLocation(point); // ✅ pickup update
+                      },
                     ),
                     children: [
                       TileLayer(
                         urlTemplate:
                             "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                        subdomains: const ['a', 'b', 'c'],
+                        subdomains: ['a', 'b', 'c'],
                       ),
-                      MarkerLayer(
-                        markers: [
-                          Marker(
-                            point: currentLatLng!,
-                            width: 60,
-                            height: 60,
-                            child: const Icon(
-                              Icons.location_on,
-                              size: 40,
-                              color: Colors.red,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-          ),
 
-          // Location text at bottom
-          // Container(
-          //   padding: const EdgeInsets.all(12),
-          //   width: double.infinity,
-          //   color: Colors.grey.shade200,
-          //   child: Text(
-          //     locationText,
-          //     textAlign: TextAlign.center,
-          //     style: const TextStyle(fontSize: 16),
-          //   ),
-          // ),
+                      // 🔹 Pickup + Drop-off markers
+                      Obx(() => MarkerLayer(
+                            markers: [
+                              if (controller.currentLatLng.value != null)
+                                Marker(
+                                  point: controller.currentLatLng.value!,
+                                  width: 80,
+                                  height: 80,
+                                  child: const Icon(Icons.my_location,
+                                      color: Colors.blue, size: 35),
+                                ),
+                              if (controller.dropOffLatLng.value != null)
+                                Marker(
+                                  point: controller.dropOffLatLng.value!,
+                                  width: 80,
+                                  height: 80,
+                                  child: const Icon(Icons.location_pin,
+                                      color: Colors.red, size: 40),
+                                ),
+                            ],
+                          )),
+
+                      // 🔹 Route line
+                      Obx(() => PolylineLayer(
+                            polylines: [
+                              if (controller.polylinePoints.isNotEmpty)
+                                Polyline(
+                                  points: controller.polylinePoints,
+                                  strokeWidth: 4,
+                                  color: Colors.blue,
+                                ),
+                            ],
+                          )),
+                    ],
+                  )),
+          ),
         ],
       ),
     );

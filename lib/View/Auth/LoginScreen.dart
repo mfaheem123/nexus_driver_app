@@ -175,29 +175,37 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Keep me Login',
-                                style: gilroyMedium(
-                                  fontSize: 18,
-                                  color: theme.textTheme.bodyMedium!.color,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20, right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Keep me Login',
+                                  style: gilroyMedium(
+                                    fontSize: 18,
+                                    color: const Color.fromARGB(
+                                      255,
+                                      91,
+                                      19,
+                                      128,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              Transform.scale(
-                                scale: 0.70,
-                                child: Switch(
-                                  value: _keepLoggedIn,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _keepLoggedIn = value;
-                                    });
-                                  },
-                                  activeColor: Colors.green,
+                                Transform.scale(
+                                  scale: 0.70,
+                                  child: Switch(
+                                    value: _keepLoggedIn,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _keepLoggedIn = value;
+                                      });
+                                    },
+                                    activeColor: Colors.green,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           const SizedBox(height: 20),
 

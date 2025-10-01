@@ -12,6 +12,7 @@ class CustomTextFieldDy extends StatelessWidget {
   final bool showBorder;
   double borderRadius;
   final Color? borderColor;
+  final TextInputType? keyboard;
 
   CustomTextFieldDy({
     super.key,
@@ -26,11 +27,16 @@ class CustomTextFieldDy extends StatelessWidget {
     this.borderColor,
     this.Textcolor,
     this.showBorder = false,
+    this.keyboard, required Null Function(dynamic value) onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: (value) {
+        onPressed;
+      },
+      keyboardType: keyboard,
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
@@ -45,7 +51,6 @@ class CustomTextFieldDy extends StatelessWidget {
             : null,
         suffix: sufixIcon != null
             ? IconButton(
-         
                 onPressed: onPressed,
                 icon: Icon(sufixIcon, color: color, size: 30),
               )
@@ -62,10 +67,7 @@ class CustomTextFieldDy extends StatelessWidget {
         enabledBorder: showBorder
             ? OutlineInputBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
-                borderSide: BorderSide(
-                  color: borderColor ?? Colors.black,
-               
-                ),
+                borderSide: BorderSide(color: borderColor ?? Colors.black),
               )
             : InputBorder.none,
 
@@ -81,4 +83,4 @@ class CustomTextFieldDy extends StatelessWidget {
       ),
     );
   }
-  }
+}

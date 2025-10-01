@@ -107,8 +107,9 @@ class StaticticsScreen extends StatelessWidget {
                             SizedBox(
                               width: width / 2.4,
                               height: 38.0,
-                              child:  CustomTextFieldDy(
+                              child: CustomTextFieldDy(
                                 hintText: "Select Start Date",
+                                onChanged: (value) {},
                               ),
                             ),
                             const SizedBox(height: 8.0),
@@ -117,8 +118,9 @@ class StaticticsScreen extends StatelessWidget {
                             SizedBox(
                               width: width / 2.4,
                               height: 38.0,
-                              child:  CustomTextFieldDy(
+                              child: CustomTextFieldDy(
                                 hintText: "Select End Date",
+                                onChanged: (value) {},
                               ),
                             ),
                           ],
@@ -193,7 +195,7 @@ class StaticticsScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 5.0),
                     const Divider(height: 12.0, color: Colors.white),
-                    const SizedBox(height: 15.0),
+                    const SizedBox(height: 10.0),
                     // -----------  Today or Yesterday Section----------------
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -261,7 +263,7 @@ class StaticticsScreen extends StatelessWidget {
                       ],
                     ),
 
-                    SizedBox(height: 18.0),
+                    SizedBox(height: 15.0),
                     // ----------------LAST WEEEK OR LAST MINTH SECTION----------------------------------
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
