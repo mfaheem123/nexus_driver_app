@@ -74,19 +74,19 @@ class MapControllerX extends GetxController {
     }
   }
 
-  /// ✅ Drop-off search by address
-  Future<void> searchDropOff(String address) async {
-    try {
-      List<Location> locations = await locationFromAddress(address);
-      if (locations.isNotEmpty) {
-        final drop = LatLng(locations.first.latitude, locations.first.longitude);
-        dropOffLatLng.value = drop;
-        updateRoute();
-      }
-    } catch (e) {
-      Get.snackbar("Error", "Address not found");
-    }
-  }
+  // /// ✅ Drop-off search by address
+  // Future<void> searchDropOff(String address) async {
+  //   try {
+  //     List<Location> locations = await locationFromAddress(address);
+  //     if (locations.isNotEmpty) {
+  //       final drop = LatLng(locations.first.latitude, locations.first.longitude);
+  //       dropOffLatLng.value = drop;
+  //       updateRoute();
+  //     }
+  //   } catch (e) {
+  //     Get.snackbar("Error", "Address not found");
+  //   }
+  // }
 
   /// ✅ Straight line route from pickup → drop-off
   void updateRoute() {

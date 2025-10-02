@@ -88,22 +88,17 @@ class FlagDownScreen extends StatelessWidget {
               // color: Colors.amber,
               child: OpenStreetMapScreen(),
             ),
-            const SizedBox(height: 4),
+
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
                   color: theme.scaffoldBackgroundColor,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 30,
-                      right: 30,
-                      top: 20,
-                      bottom: 20,
-                    ),
+                    padding: const EdgeInsets.only(left: 30, right: 30),
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 40),
+                          padding: const EdgeInsets.only(left: 10, top: 10),
                           child: Container(
                             alignment: Alignment.center,
                             child: Row(
@@ -113,6 +108,8 @@ class FlagDownScreen extends StatelessWidget {
                                   color: Colors.red,
                                 ),
                                 const SizedBox(width: 15),
+
+                                // Current Location TextField ---------------------------------------------------
                                 Expanded(
                                   child: Obx(
                                     () => Text(
@@ -132,55 +129,68 @@ class FlagDownScreen extends StatelessWidget {
                           ),
                         ),
 
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
 
-                        // 🔹 Drop-off input field
+                        // Drop-off TextField---------------------------------------------------------
                         SizedBox(
                           height: 50,
                           width: width,
                           child: CustomTextFieldDy(
+                            onChanged: (value) {},
                             showBorder: false,
                             hintText: "Drop off",
                             prefixIcon: Icons.location_on,
                             color: Colors.red,
-                            onChanged: (value) {
-                              map_controller.searchDropOff(value);
-                            },
                           ),
                         ),
-                        const SizedBox(height: 10),
+
+                        // Two Way TextField ---------------------------------------------------
                         Obx(
                           () => controller.viaLocation.value
-                              ? SizedBox(
-                                  height: 50,
-                                  width: width,
-                                  child: CustomTextFieldDy(
-                                    showBorder: false,
-                                    hintText: "Via...",
-                                    prefixIcon: Icons.location_on,
-                                    color: Colors.red,
-                                    onChanged: (value) {},
+                              ? Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 10,
+                                  ),
+                                  child: SizedBox(
+                                    height: 50,
+                                    width: width,
+                                    child: CustomTextFieldDy(
+                                      showBorder: false,
+                                      hintText: "Two Way...",
+                                      prefixIcon: Icons.location_on,
+                                      color: Colors.red,
+                                      onChanged: (value) {},
+                                    ),
                                   ),
                                 )
                               : const SizedBox(height: 20),
                         ),
 
+                        // Two Way TextField ---------------------------------------------------
                         Obx(
                           () => controller.viaLocation.value
-                              ? SizedBox(
-                                  height: 50,
-                                  width: width,
-                                  child: CustomTextFieldDy(
-                                    showBorder: false,
-                                    hintText: "Via...",
-                                    prefixIcon: Icons.location_on,
-                                    color: Colors.red,
-                                    onChanged: (value) {},
+                              ? Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 10,
+                                  ),
+                                  child: SizedBox(
+                                    height: 50,
+                                    width: width,
+                                    child: CustomTextFieldDy(
+                                      showBorder: false,
+                                      hintText: "Two Way...",
+                                      prefixIcon: Icons.location_on,
+                                      color: Colors.red,
+                                      onChanged: (value) {},
+                                    ),
                                   ),
                                 )
-                              : const SizedBox(height: 5),
+                              : const SizedBox(height: 0),
                         ),
 
+                        // Name TextField ---------------------------------------------------
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -196,6 +206,8 @@ class FlagDownScreen extends StatelessWidget {
                                 onChanged: (value) {},
                               ),
                             ),
+
+                            // Number TextField ---------------------------------------------------
                             SizedBox(
                               height: 40,
                               width: width / 2.5,
@@ -211,6 +223,8 @@ class FlagDownScreen extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 15),
+
+                        // Email TextField ---------------------------------------------------
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -226,12 +240,14 @@ class FlagDownScreen extends StatelessWidget {
                                 onChanged: (value) {},
                               ),
                             ),
+
+                            // Luggage TextField ---------------------------------------------------
                             SizedBox(
                               height: 40,
                               width: width / 2.5,
                               child: CustomTextFieldDy(
                                 keyboard: TextInputType.number,
-                                hintText: "luggage",
+                                hintText: "Luggage",
                                 showBorder: true,
                                 borderColor: Colors.white,
                                 borderRadius: 12,
@@ -242,6 +258,7 @@ class FlagDownScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 15),
 
+                        // Person TextField ---------------------------------------------------
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -257,6 +274,8 @@ class FlagDownScreen extends StatelessWidget {
                                 onChanged: (value) {},
                               ),
                             ),
+
+                            // Two Way Select Drop Down ---------------------------------------------------
                             Container(
                               alignment: Alignment.center,
                               height: 55,

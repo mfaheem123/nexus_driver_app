@@ -1,3 +1,4 @@
+import 'package:driver_app_alpha/Controller/osm_controller.dart';
 import 'package:driver_app_alpha/theme/theme.dart';
 import 'package:get/get.dart';
 
@@ -10,4 +11,7 @@ class AuthBinding implements Bindings {
     Get.lazyPut<AuthController>(() => AuthController());
   }
 }
+
+
+
 
