@@ -14,7 +14,7 @@ import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverDeshboard/
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Message/message.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/PlotScreen/plotScreen.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/BookingList/list.dart';
-import 'package:driver_app_alpha/View/Deshboard/RideInfoScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/RideInfoScreen.dart';
 import 'package:get/get.dart';
 part 'app_routes.dart';
 

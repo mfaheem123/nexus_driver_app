@@ -19,6 +19,7 @@ class StaticticsScreen extends StatelessWidget {
     RxBool typeCash = false.obs;
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    final theme = Theme.of(context);
     return Scaffold(
       body: Column(
         children: [
@@ -51,7 +52,7 @@ class StaticticsScreen extends StatelessWidget {
                         'Statistics',
                         style: gilroySemiBold(
                           color: Colors.white,
-                          fontSize: 25,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -122,9 +123,8 @@ class StaticticsScreen extends StatelessWidget {
                                   label: Container(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 6,
-                                      // vertical: 2,
                                     ),
-                                    color: Colors.white,
+                                    color: theme.scaffoldBackgroundColor,
                                     child: const Text(
                                       "Start Date",
                                       style: TextStyle(
@@ -162,7 +162,7 @@ class StaticticsScreen extends StatelessWidget {
                                       horizontal: 6,
                                       // vertical: ,
                                     ),
-                                    color: Colors.white,
+                                    color: theme.scaffoldBackgroundColor,
                                     child: const Text(
                                       "End Date",
                                       style: TextStyle(

@@ -300,32 +300,41 @@ class RideInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final theme = Theme.of(context);
     double heights = MediaQuery.of(context).size.height;
     double widths = MediaQuery.of(context).size.width;
     return SafeArea(
+
       child: Scaffold(
-        backgroundColor: const Color(0xff40158B),
+        backgroundColor: const Color.fromARGB(255, 91, 19, 128),
         body: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: heights / 15),
+              // IconButton(
+              //   onPressed: () {
+              //     Get.back();
+              //   },
+              //   icon: const Icon(Icons.arrow_back, color: Colors.white),
+              // ),
+              SizedBox(height: heights / 25),
               const Text(
                 "Job Invitation",
                 style: TextStyle(
-                  color: Colors.white,      // yha pr color hai --------------------------
+                  color: Colors
+                      .white, // yha pr color hai --------------------------
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: heights / 15),
+              SizedBox(height: heights / 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Container(
                   height: heights / 1.2,
                   width: widths,
                   decoration: BoxDecoration(
-                    color: Colors.white,                  // yha pr color hai --------------------------------
+                    color: theme.scaffoldBackgroundColor, // yha pr color hai --------------------------------
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Padding(
@@ -334,33 +343,33 @@ class RideInfoScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 20),
-                        const Align(
+                         Align(
                           alignment: Alignment.center,
                           child: Text(
                             "Thanks John,",
                             style: TextStyle(
-                              color: Color(0xff1C1047),           // yha pr color hai ------------------------
-                              fontSize: 32,
+                              color:    theme.textTheme.bodyMedium!.color,
+                                                            fontSize: 32,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.center,
                           child: Text(
                             "Now your passenger is waiting.",
                             style: TextStyle(
-                              color: Color(0xff431886),                     // yha pr color hai ---------------
+                               color:    theme.textTheme.bodyMedium!.color,// yha pr color hai ---------------
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         SizedBox(height: heights / 15),
-                        const Text(
+                         Text(
                           "Ride Info",
                           style: TextStyle(
-                            color: Color(0xff1C1047),       // yha pr color hai --------------------
+                            color:    theme.textTheme.bodyMedium!.color, // yha pr color hai --------------------
                             fontSize: 27,
                             fontWeight: FontWeight.bold,
                           ),
@@ -368,12 +377,15 @@ class RideInfoScreen extends StatelessWidget {
                         SizedBox(height: heights / 45),
                         Row(
                           children: [
-                            const Icon(Icons.person, color: Color(0xff2D1264)),     // yha pr color hai ------------------
+                            const Icon(
+                              Icons.person,
+                              color: Color(0xff2D1264),
+                            ), // yha pr color hai ------------------
                             SizedBox(width: widths / 45),
-                            const Text(
+                             Text(
                               "Muhammad Faheem ",
                               style: TextStyle(
-                                color: Color(0xff1C1047),         // yha pr color hai -------------------------
+                                  color:    theme.textTheme.bodyMedium!.color, // yha pr color hai -------------------------
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -383,15 +395,18 @@ class RideInfoScreen extends StatelessWidget {
                         SizedBox(height: heights / 45),
                         Row(
                           children: [
-                            const Icon(Icons.location_pin, color: Color(0xff2D1264)),
+                            const Icon(
+                              Icons.location_pin,
+                              color: Color(0xff2D1264),
+                            ),
                             SizedBox(width: widths / 45),
-                            const Column(
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "Pick up location",
                                   style: TextStyle(
-                                    color: Color(0xff1C1047),         // yha pr color hai -----------------------------
+                                      color:    theme.textTheme.bodyMedium!.color,// yha pr color hai -----------------------------
                                     fontSize: 23,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -399,7 +414,7 @@ class RideInfoScreen extends StatelessWidget {
                                 Text(
                                   "123 AnyWhere Street....",
                                   style: TextStyle(
-                                    color: Colors.black,                  // yha pr color hai -------------------
+                                      color:    theme.textTheme.bodyMedium!.color, // yha pr color hai -------------------
                                     fontSize: 20,
                                   ),
                                 ),
@@ -410,15 +425,18 @@ class RideInfoScreen extends StatelessWidget {
                         SizedBox(height: heights / 45),
                         Row(
                           children: [
-                            const Icon(Icons.location_pin, color: Color(0xff2D1264)),     // yha pr color hai ---------------
+                            const Icon(
+                              Icons.location_pin,
+                              color: Color(0xff2D1264),
+                            ), // yha pr color hai ---------------
                             SizedBox(width: widths / 45),
-                            const Column(
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "Drop of Location",
                                   style: TextStyle(
-                                    color: Color(0xff1C1047),           // yha pr color hai ----------------------
+                                      color:    theme.textTheme.bodyMedium!.color,  // yha pr color hai ----------------------
                                     fontSize: 23,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -426,7 +444,7 @@ class RideInfoScreen extends StatelessWidget {
                                 Text(
                                   "123 AnyWhere Street....",
                                   style: TextStyle(
-                                    color: Colors.black,                // yha pr color hai ------------------------
+                                     color:    theme.textTheme.bodyMedium!.color,    // yha pr color hai ------------------------
                                     fontSize: 20,
                                   ),
                                 ),
@@ -435,10 +453,10 @@ class RideInfoScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: heights / 45),
-                        const Text(
+                         Text(
                           "Fare:£29",
                           style: TextStyle(
-                            color: Color(0xff1C1047),         // yha pr color hai -----------------------------
+                              color:    theme.textTheme.bodyMedium!.color, // yha pr color hai -----------------------------
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
                           ),
@@ -449,7 +467,9 @@ class RideInfoScreen extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xff42A451),         // yha pr color hai ---------------------
+                              backgroundColor: const Color(
+                                0xff42A451,
+                              ), // yha pr color hai ---------------------
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
@@ -461,7 +481,8 @@ class RideInfoScreen extends StatelessWidget {
                             child: Text(
                               'I am on the Way',
                               style: gilroyMedium(
-                                color: Colors.white,          // yha pr color hai ----------------------
+                                color: Colors
+                                    .white, // yha pr color hai ----------------------
                                 fontSize: 18,
                               ),
                             ),
@@ -518,7 +539,7 @@ class _SwipeToArriveCardState extends State<SwipeToArriveCard> {
       height: 70,
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-        color: const Color(0xff6B46BA),       // yha pr color hai ------------------------
+        color: const Color.fromARGB(255, 91, 19, 128), // yha pr color hai ------------------------
         borderRadius: BorderRadius.circular(50),
       ),
       child: Stack(
@@ -527,7 +548,8 @@ class _SwipeToArriveCardState extends State<SwipeToArriveCard> {
             child: Text(
               _isArrived ? "ARRIVED!" : "      Swipe to ARRIVED",
               style: const TextStyle(
-                color: Colors.white,              // yha pr color hai ------------------------
+                color:
+                    Colors.white, // yha pr color hai ------------------------
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -560,14 +582,16 @@ class _SwipeToArriveCardState extends State<SwipeToArriveCard> {
                 width: 70,
                 height: 70,
                 decoration: const BoxDecoration(
-                  color: Color(0xffE9FF6C),                       // yha pr color hai -------------------
+                  color: Color(
+                    0xffE9FF6C,
+                  ), // yha pr color hai -------------------
                   // Color.fromARGB(255, 91, 19, 110),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
                   Icons.double_arrow_rounded,
                   size: 30,
-                  color: Colors.black,          // yha pr color hai -------------------
+                  color: Colors.black, // yha pr color hai -------------------
                 ),
               ),
             ),

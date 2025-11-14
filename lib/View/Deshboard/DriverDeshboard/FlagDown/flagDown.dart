@@ -283,16 +283,24 @@ class FlagDownScreen extends StatelessWidget {
 
                               child: CustomDropdown(
                                 items: list,
+
                                 hintText: "Select Way",
                                 initialItem: list[0],
+
                                 decoration: CustomDropdownDecoration(
+                                  listItemStyle: const TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                  headerStyle: const TextStyle(
+                                    color: Colors.black,
+                                  ),
                                   expandedFillColor: const Color.fromARGB(
                                     255,
-                                    211,
-                                    207,
-                                    207,
+                                    228,
+                                    224,
+                                    224,
                                   ),
-                                  closedFillColor: Colors.grey.shade100,
+                                  closedFillColor: Colors.grey[100],
                                 ),
                                 onChanged: (value) {
                                   int index = list.indexOf(value!);

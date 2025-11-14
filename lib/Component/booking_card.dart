@@ -19,7 +19,7 @@ class CustomBookingCard extends StatelessWidget {
   String? fare;
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //----------------- Pick Up location------------------------------------
@@ -27,6 +27,14 @@ class CustomBookingCard extends StatelessWidget {
           children: [
             const Icon(Icons.location_on, color: DynamicColors.greenColor),
             Text(PicUp_Location),
+            Spacer(),
+            Text(
+              "Completed",
+              style: TextStyle(
+                color: DynamicColors.greenColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
         // ------------------ Via 1 ----------------------
@@ -47,19 +55,9 @@ class CustomBookingCard extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 5),
-         Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(bookingDate!),
-            const Text(
-              "Completed",
-              style: TextStyle(
-                color: DynamicColors.greenColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(fare!),
-          ],
+          children: [Text(bookingDate!), Text(fare!)],
         ),
       ],
     );

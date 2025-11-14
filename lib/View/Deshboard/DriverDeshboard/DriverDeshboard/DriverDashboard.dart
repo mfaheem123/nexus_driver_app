@@ -90,7 +90,7 @@ class _DashboardHomeState extends State<DashboardHome> {
         Container(
           color: const Color.fromARGB(255, 91, 19, 128),
           padding: const EdgeInsets.only(
-            top: 15,
+            top: 10,
             left: 20,
             right: 20,
             bottom: 15,
@@ -144,7 +144,7 @@ class _DashboardHomeState extends State<DashboardHome> {
               Row(
                 children: [
                   const CircleAvatar(
-                    radius: 35,
+                    radius: 30,
                     backgroundImage: AssetImage('assets/profile.jpg'),
                   ),
                   const SizedBox(width: 15),
@@ -154,7 +154,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                       Text(
                         'Welcome Back !',
                         style: gilroyBold(
-                          fontSize: 18,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
                           color: theme.textTheme.bodyMedium!.color,
                         ),
@@ -172,7 +172,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                           Text(
                             '1',
                             style: gilroyMedium(
-                              fontSize: 15,
+                              fontSize: 13,
                               color: theme.textTheme.bodyMedium!.color,
                             ),
                           ),
@@ -187,7 +187,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                                   ? "*****"
                                   : "100",
                               style: gilroyMedium(
-                                fontSize: 15,
+                                fontSize: 13,
                                 color: theme.textTheme.bodyMedium!.color,
                               ),
                             ),
@@ -232,7 +232,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               Row(
                 children: [
                   const Icon(Icons.location_on, size: 25, color: Colors.green),
@@ -240,17 +240,17 @@ class _DashboardHomeState extends State<DashboardHome> {
                   Text(
                     '123 Anywhere Street, Any City',
                     style: gilroyMedium(
-                      fontSize: 15,
+                      fontSize: 13,
                       color: theme.textTheme.bodyMedium!.color,
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 5),
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
-                  vertical: 15,
+                  vertical: 13,
                 ),
                 decoration: BoxDecoration(
                   color: theme
@@ -280,7 +280,7 @@ class _DashboardHomeState extends State<DashboardHome> {
             ],
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 5),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 5.0),

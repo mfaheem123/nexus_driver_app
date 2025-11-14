@@ -87,7 +87,12 @@ class PlotScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: DataTable(
                     columns: [
-                      const DataColumn(label: Text("Plot")),
+                      const DataColumn(
+                        label: Text(
+                          "Plot",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
                       const DataColumn(label: Text("J0")),
                       const DataColumn(label: Text("J15")),
                       const DataColumn(label: Text("J30")),
@@ -98,7 +103,10 @@ class PlotScreen extends StatelessWidget {
                           width: 40,
                           height: 30,
                           color: Colors.amber,
-                          child: const Text("Drv"),
+                          child: const Text(
+                            "Drv",
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
                       ),
                     ],

@@ -8,12 +8,13 @@ class FareMeterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+       final theme = Theme.of(context);
     double heights = MediaQuery.of(context).size.height;
     double widths = MediaQuery.of(context).size.width;
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xff2A1655),
+        backgroundColor: const Color.fromARGB(255, 91, 19, 128),
         // Color.fromARGB(255, 91, 19, 128),
         // backgroundColor: Color(0xff0F0F0F
         // ),
@@ -211,7 +212,7 @@ class FareMeterScreen extends StatelessWidget {
                       width: widths / 2.3,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Color(0xff462C87),
+                        color: theme.scaffoldBackgroundColor,
                         // const Color(0xFF5B1380).withOpacity(0.8)
                       ),
                       child: const Center(
@@ -231,7 +232,7 @@ class FareMeterScreen extends StatelessWidget {
                       width: widths / 2.3,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Color(0xff462C87),
+                        color: theme.scaffoldBackgroundColor,
                         // const Color(0xFF5B1380).withOpacity(0.8)
                       ),
                       child: const Center(
@@ -263,7 +264,7 @@ class FareMeterScreen extends StatelessWidget {
                   width: widths,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
+                    color: theme.scaffoldBackgroundColor,
                     // Color(0xff1E1E1E).withOpacity(0.1)
                   ),
                   child: Padding(
@@ -278,10 +279,10 @@ class FareMeterScreen extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                 Text(
                                   "Passenger",
                                   style: TextStyle(
-                                    color: Color(0xff21134D),
+                                    color:    theme.textTheme.bodyMedium!.color,
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -312,11 +313,11 @@ class FareMeterScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: heights * 0.015),
-                        infoRow("Name  :", "Ahmed Adam"),
-                        infoRow("Date    :", "24th March 2025"),
-                        infoRow("Time   :", "4pm"),
+                        infoRow("Name  :", "Ahmed Adam",      theme.textTheme.bodyMedium!.color,),
+                        infoRow("Date    :", "24th March 2025",  theme.textTheme.bodyMedium!.color,),
+                        infoRow("Time   :", "4pm",  theme.textTheme.bodyMedium!.color,),
                         // SizedBox(height: heights * 0.015),
-                        infoRow("Notes :", "Bring Coffee"),
+                        infoRow("Notes :", "Bring Coffee",  theme.textTheme.bodyMedium!.color,),
                       ],
                     ),
                   ),
@@ -329,7 +330,7 @@ class FareMeterScreen extends StatelessWidget {
                   width: widths,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
+                    color: theme.scaffoldBackgroundColor,
                     // Color(0xff1E1E1E).withOpacity(0.1)
                   ),
                   child: Padding(
@@ -345,10 +346,10 @@ class FareMeterScreen extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                 Text(
                                   "DropOff Location",
                                   style: TextStyle(
-                                    color: Color(0xff21134D),
+                                    color:  theme.textTheme.bodyMedium!.color,
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -383,10 +384,10 @@ class FareMeterScreen extends StatelessWidget {
                           alignment: Alignment.topLeft,
                           child: Text(
                             "Model Colony NW67BP",
-                            style: const TextStyle(
+                            style:  TextStyle(
                               fontSize: 16,
                               // fontWeight: FontWeight.bold,
-                              color: Color(0xff21134D),
+                              color:  theme.textTheme.bodyMedium!.color,
                             ),
                           ),
                         ),
@@ -407,16 +408,16 @@ class FareMeterScreen extends StatelessWidget {
     );
   }
 
-  Widget infoRow(String title, String value) {
+  Widget infoRow(String title, String value, color) {
     return Row(
       children: [
         Flexible(
           child: Text(
             title,
-            style: const TextStyle(
+            style:  TextStyle(
               fontSize: 18,
               // fontWeight: FontWeight.bold,
-              color: Color(0xff21134D),
+                color:   color,
             ),
           ),
         ),
@@ -424,10 +425,10 @@ class FareMeterScreen extends StatelessWidget {
         Flexible(
           child: Text(
             "$value",
-            style: const TextStyle(
+            style:  TextStyle(
               fontSize: 16,
               // fontWeight: FontWeight.bold,
-              color: Color(0xff21134D),
+              color: color,
             ),
           ),
         ),
@@ -452,6 +453,7 @@ class _SwipeToClearCardState extends State<SwipeToClearCard> {
 
   @override
   Widget build(BuildContext context) {
+   final theme = Theme.of(context);
     String displayText;
     if (!_isStarted) {
       displayText = "Swipe to START";
@@ -467,7 +469,7 @@ class _SwipeToClearCardState extends State<SwipeToClearCard> {
       height: 70,
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-        color: Color(0xff6B46BA),
+        color: theme.scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(50),
       ),
       child: Stack(
@@ -475,8 +477,8 @@ class _SwipeToClearCardState extends State<SwipeToClearCard> {
           Center(
             child: Text(
               displayText,
-              style: const TextStyle(
-                color: Colors.white,
+              style:  TextStyle(
+                color: theme.textTheme.bodyMedium!.color,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),

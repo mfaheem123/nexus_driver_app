@@ -42,7 +42,7 @@ class MissedScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CustomBookingCard(
-                      PicUp_Location: "Pic Up Location",
+                      PicUp_Location: "Pick Up Location",
                       Via_1_Location: "Via 1",
                       Via_2_Location: "Via 2",
                       Drop_of_Location: "Drop Of Location",

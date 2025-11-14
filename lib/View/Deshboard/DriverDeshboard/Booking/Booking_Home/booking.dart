@@ -98,15 +98,12 @@ class Booking_Screen extends StatelessWidget {
           Text(
             titile,
             style: gilroySemiBold(
-              color: const Color.fromARGB(255, 87, 80, 80),
+              color: const Color.fromARGB(204, 131, 25, 184),
               fontWeight: FontWeight.bold,
+              fontSize: 20,
             ),
           ),
-          Divider(
-            thickness: 2,
-            endIndent: 115,
-            radius: BorderRadius.circular(20),
-          ),
+          Divider(thickness: 3, endIndent: 120, indent: 4.5),
           const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

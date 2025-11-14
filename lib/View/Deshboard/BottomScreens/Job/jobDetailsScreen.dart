@@ -160,6 +160,7 @@ class JobDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 65,
@@ -202,7 +203,7 @@ class JobDetailsScreen extends StatelessWidget {
           // Profile Card
           Container(
             // height: MediaQuery.of(context).size.height ,
-            color: Colors.white,
+            color: theme.scaffoldBackgroundColor,
             padding: const EdgeInsets.all(12),
             child: const Row(
               children: [
@@ -226,6 +227,7 @@ class JobDetailsScreen extends StatelessWidget {
                     Text("Here you have your job details"),
                   ],
                 ),
+                Spacer(),
                 Icon(Icons.notifications, color: Colors.green),
               ],
             ),
@@ -290,7 +292,7 @@ class JobDetailsScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CustomBookingCard(
-                      PicUp_Location: "Pic Up Location",
+                      PicUp_Location: "Pick Up Location",
                       Via_1_Location: "Via 1",
                       Via_2_Location: "Via 2",
                       Drop_of_Location: "Drop Of Location",

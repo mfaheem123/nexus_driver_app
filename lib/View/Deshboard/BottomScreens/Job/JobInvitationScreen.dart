@@ -6,63 +6,52 @@ import 'package:get/get.dart';
 class JobInvitationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+      final theme = Theme.of(context);
     double heights = MediaQuery.of(context).size.height;
     double widths = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: theme.scaffoldBackgroundColor,
+        appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 91, 19, 128),
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+        ),
+        title: const Text(
+          "Job Invitation",
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        centerTitle: true,
+       actions: [
+       IconButton(
+          onPressed: () {
+            Get.toNamed('/SettingsScreen');
+          },
+          icon: const Icon(Icons.settings, color: Colors.white),
+        ),
+        ],
+      ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                color: Color.fromARGB(255, 91, 19, 128),
-                padding: const EdgeInsets.only(
-                  top: 30,
-                  left: 20,
-                  right: 20,
-                  bottom: 15,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(Icons.settings, color: Colors.white, size: 30),
-                    Text(
-                      'Job Invitation',
-                      style: gilroySemiBold(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.green,
-                      ),
-                      padding: const EdgeInsets.all(6),
-                      child: Icon(
-                        Icons.power_settings_new,
-                        size: 25,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            
               Container(
                 height: heights / 4,
                 width: widths,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
                   ),
-                  color: Colors.grey.withOpacity(0.3),
+                  color: theme.primaryColorLight,
                 ),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
                         horizontal: 24.0,
                         vertical: 20,
                       ),
@@ -115,7 +104,7 @@ class JobInvitationScreen extends StatelessWidget {
                         Text(
                           "You have a ride",
                           style: gilroySemiBold(
-                            color: Colors.lightBlue,
+                            color: theme.textTheme.bodyMedium!.color,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
@@ -136,14 +125,15 @@ class JobInvitationScreen extends StatelessWidget {
                     buildInfoSection(
                       title: "Pick up location",
                       icon: Icons.location_on,
-                      text: "123 Anywhere Street, Any Other test city",
+                      text: "123 Anywhere Street, Any Other test city", context: context,
+
                     ),
                     SizedBox(height: heights / 35),
 
                     buildInfoSection(
                       title: "Drop Off location",
                       icon: Icons.location_on,
-                      text: "123 Anywhere Street, Any Other test city",
+                      text: "123 Anywhere Street, Any Other test city", context: context,
                     ),
                     SizedBox(height: heights / 35),
 
@@ -151,11 +141,11 @@ class JobInvitationScreen extends StatelessWidget {
                       "Your distance from pick up",
                       style: gilroySemiBold(
                         fontSize: 25,
-                        color: Colors.blue[900],
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       children: [
                         Text(
@@ -163,7 +153,7 @@ class JobInvitationScreen extends StatelessWidget {
                           style: gilroySemiBold(
                             fontSize: 15,
 
-                            color: Colors.black,
+                            color: theme.textTheme.bodyMedium!.color,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -179,7 +169,7 @@ class JobInvitationScreen extends StatelessWidget {
                           style: gilroySemiBold(
                             fontSize: 15,
 
-                            color: Colors.black,
+                            color: theme.textTheme.bodyMedium!.color,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -189,7 +179,7 @@ class JobInvitationScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 20,
                           backgroundColor: Colors.green,
                           child: Icon(
@@ -203,16 +193,16 @@ class JobInvitationScreen extends StatelessWidget {
                           "Respond In :",
                           style: gilroySemiBold(
                             fontSize: 25,
-                            color: Colors.blue[900],
+                            color: theme.textTheme.bodyMedium!.color,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Text(
                           "58 Sec",
                           style: gilroySemiBold(
                             fontSize: 25,
-                            color: Colors.blue[900],
+                            color: theme.textTheme.bodyMedium!.color,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -236,7 +226,7 @@ class JobInvitationScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               horizontal: 50,
                               vertical: 12,
                             ),
@@ -244,7 +234,7 @@ class JobInvitationScreen extends StatelessWidget {
                           child: Text(
                             'Accept',
                             style: gilroyMedium(
-                              color: Colors.white,
+                              color: theme.textTheme.bodyMedium!.color,
                               fontSize: 25,
                             ),
                           ),
@@ -261,12 +251,12 @@ class JobInvitationScreen extends StatelessWidget {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(12),
                                       ),
-                                      titlePadding: EdgeInsets.only(
+                                      titlePadding: const EdgeInsets.only(
                                         top: 10,
                                         left: 20,
                                         right: 10,
                                       ),
-                                      contentPadding: EdgeInsets.symmetric(
+                                      contentPadding: const EdgeInsets.symmetric(
                                         horizontal: 20,
                                         vertical: 10,
                                       ),
@@ -278,14 +268,14 @@ class JobInvitationScreen extends StatelessWidget {
                                             'Reject Reasons',
                                             style: gilroySemiBold(
                                               fontSize: 20,
-                                              color: Colors.blue,
+                                              color: theme.textTheme.bodyMedium!.color,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                           GestureDetector(
                                             onTap: () =>
                                                 Navigator.of(context).pop(),
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.close,
                                               color: Colors.black,
                                             ),
@@ -296,7 +286,7 @@ class JobInvitationScreen extends StatelessWidget {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           RadioListTile<String>(
-                                            title: Text(
+                                            title: const Text(
                                               "I have an issue in my car",
                                             ),
                                             value: "car_issue",
@@ -308,7 +298,7 @@ class JobInvitationScreen extends StatelessWidget {
                                             },
                                           ),
                                           RadioListTile<String>(
-                                            title: Text(
+                                            title: const Text(
                                               "I can't entertain more rides today",
                                             ),
                                             value: "no_more_rides",
@@ -320,7 +310,7 @@ class JobInvitationScreen extends StatelessWidget {
                                             },
                                           ),
                                           RadioListTile<String>(
-                                            title: Text(
+                                            title: const Text(
                                               "Not feeling well, can't drive",
                                             ),
                                             value: "not_well",
@@ -331,11 +321,11 @@ class JobInvitationScreen extends StatelessWidget {
                                               );
                                             },
                                           ),
-                                          SizedBox(height: 10),
+                                          const SizedBox(height: 10),
                                           Container(
                                             decoration: BoxDecoration(
                                               color: Colors.blue,
-                                              border: Border(
+                                              border: const Border(
                                                 left: BorderSide(
                                                   color: Colors.black,
                                                   width: 2,
@@ -354,12 +344,12 @@ class JobInvitationScreen extends StatelessWidget {
                                             ),
                                             child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                backgroundColor: Colors.blue,
+                                                backgroundColor: const Color.fromARGB(255, 91, 19, 128),
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(30),
                                                 ),
-                                                padding: EdgeInsets.symmetric(
+                                                padding: const EdgeInsets.symmetric(
                                                   horizontal: 35,
                                                   vertical: 10,
                                                 ),
@@ -391,7 +381,7 @@ class JobInvitationScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               horizontal: 50,
                               vertical: 12,
                             ),
@@ -416,42 +406,46 @@ class JobInvitationScreen extends StatelessWidget {
     );
   }
 
-  Widget buildInfoSection({
-    required String title,
-    required IconData icon,
-    required String text,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: gilroySemiBold(
-            fontSize: 25,
-
-            color: Colors.blue[900],
-            fontWeight: FontWeight.bold,
-          ),
+Widget buildInfoSection({
+  required BuildContext context,
+  required String title,
+  required IconData icon,
+  required String text,
+}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        title,
+        style: gilroySemiBold(
+          fontSize: 25,
+          color: Theme.of(context).colorScheme.primary,
+          fontWeight: FontWeight.bold,
         ),
-        SizedBox(height: 20),
-        Row(
-          children: [
-            Icon(icon, size: 22, color: Colors.green),
-            SizedBox(width: 5),
-            Expanded(
-              child: Text(
-                text,
-                style: gilroySemiBold(
-                  fontSize: 15,
-
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+      ),
+      const SizedBox(height: 20),
+      Row(
+        children: [
+          Icon(
+            icon,
+            size: 22,
+            color: Theme.of(context).textTheme.bodyMedium!.color,
+          ),
+          const SizedBox(width: 5),
+          Expanded(
+            child: Text(
+              text,
+              style: gilroySemiBold(
+                fontSize: 15,
+                color: Theme.of(context).textTheme.bodyLarge!.color,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
-        ),
-      ],
-    );
-  }
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
 }
