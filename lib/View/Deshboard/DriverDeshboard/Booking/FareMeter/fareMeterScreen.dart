@@ -1,5 +1,6 @@
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/ShowAmount/showamount.dart';
+import 'package:driver_app_alpha/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,55 +9,55 @@ class FareMeterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-       final theme = Theme.of(context);
+    final theme = Theme.of(context);
     double heights = MediaQuery.of(context).size.height;
     double widths = MediaQuery.of(context).size.width;
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 91, 19, 128),
-        // Color.fromARGB(255, 91, 19, 128),
-        // backgroundColor: Color(0xff0F0F0F
-        // ),
+       backgroundColor: theme.bannerTheme.backgroundColor,
         body: SingleChildScrollView(
           // ✅ Prevent overflow
           child: Column(
             children: [
-              Container(
-                color: const Color(0xff2A1655),
-                padding: const EdgeInsets.only(
-                  top: 15,
-                  left: 20,
-                  right: 20,
-                  bottom: 15,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 30,
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(
+                  // color: Color.fromARGB(255, 91, 19, 128),
+                  // padding: const EdgeInsets.only(
+                  //   top: 15,
+                  //   left: 20,
+                  //   right: 20,
+                  //   bottom: 15,
+                  // ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                          size: 30,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'FareMeter',
-                      style: gilroySemiBold(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                      Text(
+                        'FareMeter',
+                        style: gilroySemiBold(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 30), // Empty space
-                  ],
+                      const SizedBox(width: 30), // Empty space
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: heights * 0.02),
-
+          
               /// Main Fare / Distance Card
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -64,7 +65,7 @@ class FareMeterScreen extends StatelessWidget {
                   width: widths,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff2A1655),
+                    color: Theme.of(context).cardTheme.color,
                     // Color(0xFF2E2E2E)
                   ),
                   child: Padding(
@@ -74,13 +75,13 @@ class FareMeterScreen extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        Row(
+                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children: [
                             Text(
                               '£5.50',
                               style: TextStyle(
-                                color: Colors.white,
+                                 color: Colors.white,
                                 fontSize: 45,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -88,7 +89,7 @@ class FareMeterScreen extends StatelessWidget {
                             Text(
                               "2.4m",
                               style: TextStyle(
-                                color: Colors.white,
+                               color: Colors.white,
                                 fontSize: 45,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -97,11 +98,11 @@ class FareMeterScreen extends StatelessWidget {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children:  [
                             Text(
                               "Fare",
                               style: TextStyle(
-                                color: Colors.white,
+                            color: Colors.white,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -109,7 +110,7 @@ class FareMeterScreen extends StatelessWidget {
                             Text(
                               "Distance",
                               style: TextStyle(
-                                color: Colors.white,
+                           color: Colors.white,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -141,11 +142,11 @@ class FareMeterScreen extends StatelessWidget {
                         Row(
                           children: [
                             Column(
-                              children: const [
+                              children:  [
                                 Text(
                                   "3.00",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                   color: Colors.white,
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -172,11 +173,11 @@ class FareMeterScreen extends StatelessWidget {
                             SizedBox(width: widths / 35),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children:  [
                                 Text(
                                   "£3.00",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                   color: Colors.white,
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -184,7 +185,7 @@ class FareMeterScreen extends StatelessWidget {
                                 Text(
                                   "Charge",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                 color: Colors.white,
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -198,9 +199,9 @@ class FareMeterScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
+          
               SizedBox(height: heights * 0.02),
-
+          
               /// Wait & Traffic Buttons
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 13.0),
@@ -212,7 +213,7 @@ class FareMeterScreen extends StatelessWidget {
                       width: widths / 2.3,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: theme.scaffoldBackgroundColor,
+                        color: theme.focusColor,
                         // const Color(0xFF5B1380).withOpacity(0.8)
                       ),
                       child: const Center(
@@ -226,13 +227,13 @@ class FareMeterScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-
+          
                     Container(
                       height: heights / 13,
                       width: widths / 2.3,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: theme.scaffoldBackgroundColor,
+                    color: theme.focusColor,
                         // const Color(0xFF5B1380).withOpacity(0.8)
                       ),
                       child: const Center(
@@ -249,14 +250,14 @@ class FareMeterScreen extends StatelessWidget {
                   ],
                 ),
               ),
-
+          
               SizedBox(height: heights / 20),
-
+          
               /// Swipe Card
               Center(child: SwipeToClearCard()),
-
+          
               SizedBox(height: heights / 20),
-
+          
               /// Passenger Card
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -264,7 +265,7 @@ class FareMeterScreen extends StatelessWidget {
                   width: widths,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: theme.scaffoldBackgroundColor,
+                    color: theme.cardColor,
                     // Color(0xff1E1E1E).withOpacity(0.1)
                   ),
                   child: Padding(
@@ -279,10 +280,10 @@ class FareMeterScreen extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                 Text(
+                                Text(
                                   "Passenger",
                                   style: TextStyle(
-                                    color:    theme.textTheme.bodyMedium!.color,
+                                    color: theme.textTheme.bodyMedium!.color,
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -313,11 +314,27 @@ class FareMeterScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: heights * 0.015),
-                        infoRow("Name  :", "Ahmed Adam",      theme.textTheme.bodyMedium!.color,),
-                        infoRow("Date    :", "24th March 2025",  theme.textTheme.bodyMedium!.color,),
-                        infoRow("Time   :", "4pm",  theme.textTheme.bodyMedium!.color,),
+                        infoRow(
+                          "Name  :",
+                          "Ahmed Adam",
+                          theme.textTheme.bodyMedium!.color,
+                        ),
+                        infoRow(
+                          "Date    :",
+                          "24th March 2025",
+                          theme.textTheme.bodyMedium!.color,
+                        ),
+                        infoRow(
+                          "Time   :",
+                          "4pm",
+                          theme.textTheme.bodyMedium!.color,
+                        ),
                         // SizedBox(height: heights * 0.015),
-                        infoRow("Notes :", "Bring Coffee",  theme.textTheme.bodyMedium!.color,),
+                        infoRow(
+                          "Notes :",
+                          "Bring Coffee",
+                          theme.textTheme.bodyMedium!.color,
+                        ),
                       ],
                     ),
                   ),
@@ -330,7 +347,7 @@ class FareMeterScreen extends StatelessWidget {
                   width: widths,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: theme.scaffoldBackgroundColor,
+                  color: theme.cardColor,
                     // Color(0xff1E1E1E).withOpacity(0.1)
                   ),
                   child: Padding(
@@ -346,10 +363,10 @@ class FareMeterScreen extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                 Text(
+                                Text(
                                   "DropOff Location",
                                   style: TextStyle(
-                                    color:  theme.textTheme.bodyMedium!.color,
+                                    color: theme.textTheme.bodyMedium!.color,
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -384,10 +401,10 @@ class FareMeterScreen extends StatelessWidget {
                           alignment: Alignment.topLeft,
                           child: Text(
                             "Model Colony NW67BP",
-                            style:  TextStyle(
+                            style: TextStyle(
                               fontSize: 16,
                               // fontWeight: FontWeight.bold,
-                              color:  theme.textTheme.bodyMedium!.color,
+                              color: theme.textTheme.bodyMedium!.color,
                             ),
                           ),
                         ),
@@ -414,10 +431,10 @@ class FareMeterScreen extends StatelessWidget {
         Flexible(
           child: Text(
             title,
-            style:  TextStyle(
+            style: TextStyle(
               fontSize: 18,
               // fontWeight: FontWeight.bold,
-                color:   color,
+              color: color,
             ),
           ),
         ),
@@ -425,7 +442,7 @@ class FareMeterScreen extends StatelessWidget {
         Flexible(
           child: Text(
             "$value",
-            style:  TextStyle(
+            style: TextStyle(
               fontSize: 16,
               // fontWeight: FontWeight.bold,
               color: color,
@@ -453,7 +470,7 @@ class _SwipeToClearCardState extends State<SwipeToClearCard> {
 
   @override
   Widget build(BuildContext context) {
-   final theme = Theme.of(context);
+    final theme = Theme.of(context);
     String displayText;
     if (!_isStarted) {
       displayText = "Swipe to START";
@@ -467,9 +484,9 @@ class _SwipeToClearCardState extends State<SwipeToClearCard> {
 
     return Container(
       height: 70,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-        color: theme.scaffoldBackgroundColor,
+        color: theme.focusColor,
         borderRadius: BorderRadius.circular(50),
       ),
       child: Stack(
@@ -477,8 +494,8 @@ class _SwipeToClearCardState extends State<SwipeToClearCard> {
           Center(
             child: Text(
               displayText,
-              style:  TextStyle(
-                color: theme.textTheme.bodyMedium!.color,
+              style: TextStyle(
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),

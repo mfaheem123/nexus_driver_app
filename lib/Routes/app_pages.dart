@@ -21,10 +21,12 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  // static const initial = Routes.DeshBoardMessageScreen;
+
   static const initial = Routes.SelectCompany;
+  // static const initial = Routes.rideInfoScreen;
 
   static final routes = [
+
     GetPage(name: _Paths.loginScreen, page: () => LoginScreen()),
     GetPage(name: _Paths.tokenScreen, page: () => TokenScreen()),
     GetPage(name: _Paths.SelectCompany, page: () => SelectCompany()),

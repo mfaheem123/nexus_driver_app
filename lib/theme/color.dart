@@ -7,7 +7,6 @@ MColors._();
 
 // primary Color
 static const Color primary = Color(0xFF0857A0);
-
 // text Colors
 static const Color textPrimary = Color(0xFF333333);
 static const Color TextSecondary = Color(0xFF6C7570);

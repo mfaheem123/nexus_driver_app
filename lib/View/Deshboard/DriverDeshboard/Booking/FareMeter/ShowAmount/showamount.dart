@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverDeshboard/DriverDashboard.dart';
+import 'package:driver_app_alpha/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-
 class ShowAmount extends StatefulWidget {
-
   @override
   State<ShowAmount> createState() => _ShowAmountState();
 }
+
 class _ShowAmountState extends State<ShowAmount> {
   double bookingFare = 0;
   double parkingCharges = 0;
@@ -28,35 +28,35 @@ class _ShowAmountState extends State<ShowAmount> {
     extraDropController.text = "0";
   }
 
-
   double get totalFare =>
       bookingFare + parkingCharges + waitingCharges + extraDropCharges;
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return WillPopScope(
       onWillPop: () async {
         // SystemNavigator.pop();
         return false;
       },
       child: Scaffold(
-        backgroundColor: Colors.white,      // yha pr color hai ----------------------------
+       backgroundColor: theme.cardColor, // yha pr color hai ----------------------------
         body: SafeArea(
-          child:Padding(
+          child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-
+              
                   // Booking Fares
                   Text(
                     "Booking Fares",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
-                      color:Color(0xff2A1655),    // yha pr color hai ----------------------
+                      color: theme.hintColor, // yha pr color hai ----------------------
                       // Colors.purple.shade900,
                     ),
                   ),
@@ -66,26 +66,27 @@ class _ShowAmountState extends State<ShowAmount> {
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xff2A1655),       // yha pr color hai ---------------------
+                    color: theme.hintColor, // yha pr color hai ---------------------
                     ),
                   ),
-
+              
                   const SizedBox(height: 30),
-
+              
                   // Extra Charges
                   Text(
                     "Extra Charges",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
-                      color:Color(0xff2A1655),        // yha  pr color hai----------------------
+                    color: theme.hintColor, // yha  pr color hai----------------------
                     ),
                   ),
                   const SizedBox(height: 10),
-
+              
                   _buildTextField(
                     controller: parkingController,
                     label: "Parking Charges",
+              
                     onChanged: (value) {
                       setState(() {
                         parkingCharges = double.tryParse(value) ?? 0;
@@ -110,16 +111,16 @@ class _ShowAmountState extends State<ShowAmount> {
                       });
                     },
                   ),
-
+              
                   const SizedBox(height: 30),
-
+              
                   // Total Fares
                   Text(
                     "Total Fares",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xff2A1655),             // yha pr color hai ---------------------------
+                     color: theme.hintColor, // yha pr color hai ---------------------------
                       // Colors.purple.shade900,
                     ),
                   ),
@@ -129,25 +130,25 @@ class _ShowAmountState extends State<ShowAmount> {
                     style: TextStyle(
                       fontSize: 55,
                       fontWeight: FontWeight.bold,
-                      color:Color(0xff2A1655),          // yha pr color hai --------------------------
+                    color: theme.hintColor, // yha pr color hai --------------------------
                     ),
                   ),
-
+              
                   const SizedBox(height: 120),
-
+              
                   // Submit Button
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff2A1655),     // yha pr color hai------------------------- 
+                        backgroundColor: Color.fromARGB(255, 91, 19, 128), // yha pr color hai-------------------------
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
                       onPressed: () async {
-                 // <-- yeh method banayenge PUT request ke liye
+                        // <-- yeh method banayenge PUT request ke liye
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -160,7 +161,8 @@ class _ShowAmountState extends State<ShowAmount> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white           // yha pr color hai -----------------------------
+                          color: Colors
+                              .white, // yha pr color hai -----------------------------
                         ),
                       ),
                     ),
@@ -185,11 +187,10 @@ class _ShowAmountState extends State<ShowAmount> {
         controller: controller,
         keyboardType: const TextInputType.numberWithOptions(decimal: true),
         decoration: InputDecoration(
+          labelStyle: TextStyle(),
           labelText: label,
           prefixText: "£ ",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         ),
         onChanged: onChanged,
       ),

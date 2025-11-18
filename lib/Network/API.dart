@@ -14,6 +14,7 @@ class API {
 
   ///SingleTon
   static final API _singleton = API._internal();
+  
   var sp = GetStorage();
   factory API() {
     return _singleton;

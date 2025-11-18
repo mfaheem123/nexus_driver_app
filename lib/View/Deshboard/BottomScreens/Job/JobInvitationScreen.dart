@@ -1,5 +1,6 @@
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:driver_app_alpha/Routes/app_pages.dart';
+import 'package:driver_app_alpha/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,9 +12,9 @@ class JobInvitationScreen extends StatelessWidget {
     double widths = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: theme.scaffoldBackgroundColor,
+        // backgroundColor: theme.scaffoldBackgroundColor,
         appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 91, 19, 128),
+        backgroundColor: theme.bannerTheme.backgroundColor,
         leading: IconButton(
           onPressed: () {
             Get.back();
@@ -46,7 +47,7 @@ class JobInvitationScreen extends StatelessWidget {
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
                   ),
-                  color: theme.primaryColorLight,
+                  color: theme.primaryColor,
                 ),
                 child: Column(
                   children: [
@@ -96,7 +97,7 @@ class JobInvitationScreen extends StatelessWidget {
                         Text(
                           "Hello john,",
                           style: gilroyBold(
-                            color: Colors.black,
+                            color: Colors.red,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
@@ -126,17 +127,17 @@ class JobInvitationScreen extends StatelessWidget {
                       title: "Pick up location",
                       icon: Icons.location_on,
                       text: "123 Anywhere Street, Any Other test city", context: context,
-
+          
                     ),
                     SizedBox(height: heights / 35),
-
+          
                     buildInfoSection(
                       title: "Drop Off location",
                       icon: Icons.location_on,
                       text: "123 Anywhere Street, Any Other test city", context: context,
                     ),
                     SizedBox(height: heights / 35),
-
+          
                     Text(
                       "Your distance from pick up",
                       style: gilroySemiBold(
@@ -152,7 +153,7 @@ class JobInvitationScreen extends StatelessWidget {
                           "2 km",
                           style: gilroySemiBold(
                             fontSize: 15,
-
+          
                             color: theme.textTheme.bodyMedium!.color,
                             fontWeight: FontWeight.bold,
                           ),
@@ -168,7 +169,7 @@ class JobInvitationScreen extends StatelessWidget {
                           "Approx 5-7 mins",
                           style: gilroySemiBold(
                             fontSize: 15,
-
+          
                             color: theme.textTheme.bodyMedium!.color,
                             fontWeight: FontWeight.bold,
                           ),

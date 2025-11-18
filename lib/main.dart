@@ -62,6 +62,6 @@ class MyBehavior extends ScrollBehavior {
     Widget child,
     ScrollableDetails details,
   ) {
-    return child;
+    return  child;
   }
 }

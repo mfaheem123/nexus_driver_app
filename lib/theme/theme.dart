@@ -10,12 +10,17 @@ class UThemeData {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: Colors.white,
-    cardColor: const Color.fromARGB(255, 226, 226, 243),
-    primaryColor: Color.fromARGB(255, 91, 19, 128),
+    hintColor: Color(0xff462C87),
+        canvasColor: Colors.white,
+        focusColor: Color(0xff462C87),
+    bannerTheme: MaterialBannerThemeData(backgroundColor: const   Color(0xff2A1655),) ,  
+    cardColor: Colors.white,
+    primaryColor:  const Color(0xff40158B),
+    cardTheme: const CardThemeData(color: Color(0xff2A1655)),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: const TextStyle(color: Colors.white),
       filled: true,
-      fillColor: Colors.white,
+      fillColor: const Color.fromARGB(255, 231, 231, 231),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide.none,
@@ -35,8 +40,14 @@ class UThemeData {
   // Dark theme
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: const Color.fromARGB(255, 50, 44, 53),
-    primaryColor: Colors.deepPurple,
+    bannerTheme:        MaterialBannerThemeData(backgroundColor:  Color(0xff0F0F0F),) ,
+    canvasColor: Color.fromARGB(255, 77, 68, 82),
+    scaffoldBackgroundColor: Color(0xff0F0F0F),
+    hintColor: Colors.white,
+    primaryColor: Color.fromARGB(255, 50, 44, 53),
+    focusColor: Color(0xff5A253F),
+    cardColor: const Color.fromARGB(198, 24, 24, 26),
+    cardTheme: CardThemeData(color: Color(0xff1E1E1E)),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: const TextStyle(color: Colors.white70),
       filled: true,
@@ -76,3 +87,5 @@ class ThemeController extends GetxController {
   ThemeData get theme =>
       isDark.value ? UThemeData.darkTheme : UThemeData.lightTheme;
 }
+
+

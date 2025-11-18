@@ -19,10 +19,12 @@ abstract class Routes {
   static const SettingsScreen = _Paths.SettingsScreen;
   static const PlotScreen = _Paths.PlotScreen;
   static const DeshBoardMessageScreen = _Paths.DeshBoardMessageScreen;
+
 }
 
 abstract class _Paths {
   static const loginScreen = '/loginScreen';
+
   static const SelectCompany = '/SelectCompany';
   static const tokenScreen = '/tokenScreen';
   static const driverDashboard = '/driverDashboard';

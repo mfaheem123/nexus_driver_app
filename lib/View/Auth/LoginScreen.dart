@@ -1,6 +1,6 @@
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:driver_app_alpha/Routes/app_pages.dart';
-import 'package:driver_app_alpha/View/Auth/AuthController.dart';
+import 'package:driver_app_alpha/View/Auth/Controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../Component/color.dart';

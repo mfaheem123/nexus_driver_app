@@ -55,7 +55,7 @@ class Booking_Screen extends StatelessWidget {
             return Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
-                color: theme.cardColor,
+                color: theme.inputDecorationTheme.fillColor,
               ),
               // alignment: Alignment.center,
               child: GestureDetector(
