@@ -24,9 +24,8 @@ class _SelectCompanyState extends State<SelectCompany> {
   void initState() {
     super.initState();
     //  Screen open hote hi location fetch
-    LocationService.instance.getUserLocation(
-      controller: locationController,
-    );
+    LocationService.instance.getUserLocation(controller: locationController);
+    authController.checkUserLogin();
   }
 
   @override
@@ -37,7 +36,6 @@ class _SelectCompanyState extends State<SelectCompany> {
       backgroundColor: theme.scaffoldBackgroundColor,
       body: Center(
         child: Obx(() {
-
           if (locationController.isAccessingLocation.value) {
             return const Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +68,6 @@ class _SelectCompanyState extends State<SelectCompany> {
               ],
             );
           }
-
 
           return _mainUI(theme);
         }),
@@ -133,9 +130,8 @@ class _SelectCompanyState extends State<SelectCompany> {
               child: Text(
                 'Authenticate',
                 style: gilroyMedium(
-                color: theme.elevatedButtonTheme.style
-        ?.foregroundColor
-        ?.resolve(<WidgetState>{}),
+                  color: theme.elevatedButtonTheme.style?.foregroundColor
+                      ?.resolve(<WidgetState>{}),
                   fontSize: 20,
                 ),
               ),
@@ -172,8 +168,11 @@ class _SelectCompanyState extends State<SelectCompany> {
                     onChanged: (value) {
                       setState(() {
                         filtered = names
-                            .where((name) =>
-                                name.toLowerCase().contains(value.toLowerCase()))
+                            .where(
+                              (name) => name.toLowerCase().contains(
+                                value.toLowerCase(),
+                              ),
+                            )
                             .toList();
                       });
                     },

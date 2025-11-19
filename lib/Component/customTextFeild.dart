@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors
+import 'package:driver_app_alpha/Component/Network/API.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../Network/API.dart';
 import 'color.dart';
 
 class CustomTextFields extends StatelessWidget {
@@ -104,7 +104,7 @@ class CustomTextFields extends StatelessWidget {
           style: textCustomStyle ??
               TextStyle(
                 fontSize: 16,
-                color: API().sp.read('themeMode') == "dark"
+                color: Api().sp.read('themeMode') == "dark"
                     ? DynamicColors.whiteColor
                     : DynamicColors.dividerColor,
               ),

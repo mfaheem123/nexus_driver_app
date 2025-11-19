@@ -211,9 +211,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           ElevatedButton(
                             onPressed: () {
+                            
                               if (_formKey.currentState!.validate()) {
-                                Get.toNamed(Routes.tokenScreen);
+                                  controller.authApi();
                               }
+            
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color.fromARGB(

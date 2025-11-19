@@ -1,35 +1,46 @@
+
+
 abstract class BaseConfig {
+  String get apiUrl;
   String get imageUrl;
   String get baseUrl;
   String get socketUrl;
-
+  String get slashImageUrl;
 }
 
 class DevConfig implements BaseConfig {
   @override
-  String get baseUrl => 'http://18.222.137.176:8071/api/';
- 
-  @override
-  String get socketUrl => 'ws://18.222.137.176:8071/safetypoint';
+  String get baseUrl => "http://192.168.110.4:5000/api/";
 
   @override
-  String get imageUrl => 'http://18.222.137.176:8071/safety-point/public/';
+  String get imageUrl => "https://bloodlines.gologonow.app";
+
+  @override
+  String get slashImageUrl => "https://bloodlines.gologonow.app/";
+
+  @override
+  String get apiUrl => "http://192.168.110.4:5000/api/";
+
+  @override
+  String get socketUrl => "ws://192.168.5.251:8086/cam";
 
 }
 
 class ProductionConfig implements BaseConfig {
+  @override
+  String get baseUrl => "http://192.168.110.4:5000/api/";
 
   @override
-  // String get baseUrl => 'http://18.117.236.0:8071/api/';
-  String get baseUrl => 'https://safety-point.gologonow.tech/api/';
+  String get imageUrl => "http://apis.bloodlines.info/public";
+  @override
+  String get slashImageUrl => "http://apis.bloodlines.info/public";
 
   @override
-  // String get socketUrl => 'ws://18.117.236.0:8071/safetypoint';
-  String get socketUrl => 'ws://safety-point.gologonow.tech:8071/safetypoint';
+  String get apiUrl => "http://192.168.110.4:5000/api/";
 
   @override
-  // String get imageUrl => 'http://18.117.236.0/safety-point/public/';
-  String get imageUrl => 'http://gologonow.tech/safety-point/public/';
+  String get socketUrl => "ws://apis.bloodlines.info:8088";
+
 
 // String get mapKey => "AIzaSyDLtchj3AddQGK3mlMgqA6HKbLQlEkEa38";
 }
@@ -43,8 +54,10 @@ class Environment {
   Environment._internal();
 
   static final Environment _singleton = Environment._internal();
+
   static const String dev = 'dev';
   static const String production = 'production';
+
   late BaseConfig config;
 
   initConfig(String environment) {
