@@ -1,5 +1,6 @@
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:driver_app_alpha/Routes/app_pages.dart';
+import 'package:driver_app_alpha/View/Auth/Controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +9,7 @@ class TokenScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthController controller = Get.put(AuthController());
     return Scaffold(
       resizeToAvoidBottomInset: true,
 
@@ -62,6 +64,7 @@ class TokenScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 40),
                       TextField(
+                        controller: controller.nTG,
                         textAlign: TextAlign.left,
                         decoration: InputDecoration(
                           filled: true,
@@ -105,7 +108,8 @@ class TokenScreen extends StatelessWidget {
                       Center(
                         child: ElevatedButton(
                           onPressed: () {
-                            Get.toNamed(Routes.driverDashboard);
+                            controller.verifyNTG();
+                       
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.green,
