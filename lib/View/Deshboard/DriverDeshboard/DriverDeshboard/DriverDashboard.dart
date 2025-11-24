@@ -4,6 +4,7 @@ import 'package:driver_app_alpha/Routes/app_pages.dart';
 import 'package:driver_app_alpha/View/Deshboard/BottomScreens/Job/jobDetailsScreen.dart';
 import 'package:driver_app_alpha/View/Deshboard/BottomScreens/MyEarning/my_earning.dart';
 import 'package:driver_app_alpha/View/Deshboard/BottomScreens/ProfileScreen/profileScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverDeshboard/controller/controller.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverPay/driverPay.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/FlagDown/flagDown.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/MultiJobs/multiJob.dart';
@@ -78,6 +79,10 @@ class DashboardHome extends StatefulWidget {
 }
 
 class _DashboardHomeState extends State<DashboardHome> {
+  Deshboard controller = Get.isRegistered<Deshboard>()
+      ? Get.find<Deshboard>()
+      : Get.put(Deshboard());
+
   bool isBreakActive = false;
 
   bool isPanicActive = false;
@@ -107,7 +112,9 @@ class _DashboardHomeState extends State<DashboardHome> {
                 ),
               ),
               GestureDetector(
-                onTap: () {},
+               onTap: () {
+    controller.logOutConfirmation();
+  },
                 child: Container(
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,

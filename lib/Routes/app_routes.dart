@@ -2,6 +2,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
+  static const initial = _Paths.initial;
   static const loginScreen = _Paths.loginScreen;
   static const tokenScreen = _Paths.tokenScreen;
   static const SelectCompany = _Paths.SelectCompany;
@@ -20,9 +21,11 @@ abstract class Routes {
   static const PlotScreen = _Paths.PlotScreen;
   static const DeshBoardMessageScreen = _Paths.DeshBoardMessageScreen;
 
+
 }
 
 abstract class _Paths {
+  static const initial = '/initial';
   static const loginScreen = '/loginScreen';
 
   static const SelectCompany = '/SelectCompany';

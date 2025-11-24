@@ -1,15 +1,25 @@
 import 'package:driver_app_alpha/Component/textStyle.dart';
-import 'package:driver_app_alpha/Routes/app_pages.dart';
 import 'package:driver_app_alpha/View/Auth/Controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TokenScreen extends StatelessWidget {
   const TokenScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AuthController controller = Get.put(AuthController());
+    AuthController controller = Get.find<AuthController>();
+
+  Future<void> _launchDialer(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
+  }
+
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
 
@@ -93,13 +103,19 @@ class TokenScreen extends StatelessWidget {
                               fontSize: 15,
                             ),
                           ),
-                          Text(
-                            'ASK ADMIN',
-
-                            style: gilroyMedium(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                          GestureDetector(
+                            onTap: () {
+                                 Navigator.pop(context);
+                                          _launchDialer(
+                                              "442036030511"); // Admin number
+                            },
+                            child: Text(
+                              'ASK ADMIN',
+                              style: gilroyMedium(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],

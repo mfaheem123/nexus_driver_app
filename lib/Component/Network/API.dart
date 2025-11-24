@@ -79,10 +79,9 @@ class Api {
     print("api url :: ${fullUrl ?? apiUrl + url}");
 
     if (auth == false) {
+      
       dio.options.headers['Authorization'] = "Bearer ${sp.read('token')}";
-      // dio.options.headers['Connection'] = "keep-alive";
     }
-    // if (url != "") {
     try {
       final response = await dio.get(
         fullUrl ?? apiUrl + url,
@@ -177,7 +176,7 @@ class Api {
               if (auth == false) "Authorization": "Bearer ${sp.read('token')}"
             },
           ));
-      print("Post Function Error");
+      print("Post Function Call");
       if (isProgressShow == false) {
         if (noCloseLoading == false) {
           BotToast.closeAllLoading();

@@ -1,3 +1,4 @@
+import 'package:driver_app_alpha/View/Auth/Controller/auth_controller.dart';
 import 'package:driver_app_alpha/View/Auth/LoginScreen.dart';
 import 'package:driver_app_alpha/View/Auth/TokenScree.dart';
 import 'package:driver_app_alpha/View/Auth/selectCompany.dart';
@@ -15,6 +16,7 @@ import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Message/message.
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/PlotScreen/plotScreen.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Setting/BookingList/list.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/RideInfoScreen.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 part 'app_routes.dart';
 
@@ -22,11 +24,16 @@ class AppPages {
   AppPages._();
 
 
-  static const initial = Routes.SelectCompany;
+  static const initial = Routes.initial;
   // static const initial = Routes.rideInfoScreen;
 
   static final routes = [
 
+    GetPage(
+  name: Routes.initial,
+  page: () => Container(), // blank, invisible
+  middlewares: [AuthMiddleware()],
+),
     GetPage(name: _Paths.loginScreen, page: () => LoginScreen()),
     GetPage(name: _Paths.tokenScreen, page: () => TokenScreen()),
     GetPage(name: _Paths.SelectCompany, page: () => SelectCompany()),

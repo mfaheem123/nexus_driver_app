@@ -1,5 +1,3 @@
-
-
 import 'package:bot_toast/bot_toast.dart';
 import 'package:driver_app_alpha/Component/color.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +27,12 @@ class LoaderClass extends StatelessWidget {
 
 showLoading() {
   return BotToast.showCustomLoading(
-      toastBuilder: (_) => Center(
-          child: LoaderClass(
-            colorOne: DynamicColors.blueColor,
-            colorTwo: DynamicColors.blueColor.withOpacity(0.5),
-          )),
-      animationDuration: Duration(milliseconds: 100));
+    toastBuilder: (_) => Center(
+      child: LoaderClass(
+        colorOne: DynamicColors.blueColor,
+        colorTwo: DynamicColors.blueColor.withOpacity(0.5),
+      ),
+    ),
+    animationDuration: Duration(milliseconds: 50),
+  );
 }

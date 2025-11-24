@@ -15,18 +15,33 @@ class SelectCompany extends StatefulWidget {
 }
 
 class _SelectCompanyState extends State<SelectCompany> {
-  AuthController authController = Get.put(AuthController());
-  LocationController locationController = Get.put(LocationController());
+
+  AuthController authController = Get.isRegistered<AuthController>()
+      ? Get.find<AuthController>()
+      : Get.put(AuthController());
+
+  LocationController locationController = Get.put(LocationController(), permanent: true);
 
   final List<String> names = ["1. Osama", "2. Taj", "3. Faheem"];
 
-  @override
-  void initState() {
-    super.initState();
-    //  Screen open hote hi location fetch
-    LocationService.instance.getUserLocation(controller: locationController);
-    authController.checkUserLogin();
-  }
+@override
+void initState() {
+  super.initState();
+
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    handleStartupFlow();
+  });
+}
+
+  Future<void> handleStartupFlow() async {
+  // 1. Check location first
+  await LocationService.instance.getUserLocation(
+    controller: locationController,
+  );
+
+  // 2. After location check, then check login
+  // await authController.checkUserLogin();
+}
 
   @override
   Widget build(BuildContext context) {

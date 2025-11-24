@@ -14,7 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
   bool _keepLoggedIn = true;
 
-  AuthController controller = Get.put(AuthController());
+  AuthController controller = Get.find<AuthController>();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -212,10 +212,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           ElevatedButton(
                             onPressed: () {
                             
-                              if (_formKey.currentState!.validate()) {
                                   controller.authApi();
-                                //  Get.toNamed(Routes.tokenScreen);
-                              }
+                              // if (_formKey.currentState!.validate()) {
+                              //   //  Get.toNamed(Routes.tokenScreen);
+                              // }
             
                             },
                             style: ElevatedButton.styleFrom(

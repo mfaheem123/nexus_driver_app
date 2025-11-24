@@ -1,12 +1,12 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:driver_app_alpha/Component/Network/baseUrl.dart';
 import 'package:driver_app_alpha/Controller/navigationController.dart';
+import 'package:driver_app_alpha/View/Auth/Controller/auth_controller.dart';
 import 'package:driver_app_alpha/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'Routes/app_pages.dart';
 
@@ -17,9 +17,17 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  await GetStorage.init();
+
+  const String environment = String.fromEnvironment(
+    'ENVIRONMENT',
+    defaultValue: Environment.production,
+  );
+  Environment().initConfig(environment);
+  runApp(MyApp());
+
   Get.put(ThemeController());
   Get.put(AmountController());
+  Get.put(AuthController());
   runApp(MyApp());
 }
 
