@@ -1,32 +1,30 @@
 import 'package:driver_app_alpha/Component/Network/API.dart';
 import 'package:driver_app_alpha/Routes/app_pages.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverDeshboard/model/driver_detail_model.dart';
 import 'package:get/get.dart';
 
 class Deshboard extends GetxController {
   RxBool LogoutLoader = false.obs;
-DateTime? lastLogoutPress; // <-- New variable
-logOutConfirmation() async {
-  DateTime now = DateTime.now();
-
-  if (lastLogoutPress == null ||
-      now.difference(lastLogoutPress!) > Duration(seconds: 2)) {
-    lastLogoutPress = now;
-    Get.snackbar(
-      "Logout",
-      "Again tap to logout",
-      snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 2),
-    );
-  } else {
-    // Double press within 2 sec -> Logout
-    await logOut();
+  DateTime? lastLogoutPress; // <-- New variable
+  logOutConfirmation() async {
+    DateTime now = DateTime.now();
+    if (lastLogoutPress == null ||
+        now.difference(lastLogoutPress!) > Duration(seconds: 2)) {
+      lastLogoutPress = now;
+      Get.snackbar(
+        "Logout",
+        "Again tap to logout",
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+      );
+    } else {
+      await logOut();
+    }
   }
-}
 
   logOut() async {
     LogoutLoader.value = true;
-    var formData = {
-    };
+    var formData = {};
     var response = await Api().post(
       formData,
       "drivers/logout/${Api().sp.read('id')}",
@@ -34,22 +32,27 @@ logOutConfirmation() async {
     );
     if (response.statusCode == 200) {
       Api().sp.erase();
-        Get.offAllNamed(Routes.SelectCompany);
-    print("Sending ID: ${Api().sp.read('id')}");
+      Get.offAllNamed(Routes.SelectCompany);
+      print("Sending ID: ${Api().sp.read('id')}");
       print("Logout Success: ${response.data}");
     } else {
       print("Logout Failed: ${response.statusCode}");
     }
   }
 
+  DriverDetailsModel? driverDetailsModel;
+  RxBool getDriverLoader = false.obs;
 
-
-
-
-
-
-
-
+  driverDetail() async {
+    getDriverLoader(true);
+    var response = await Api().get('drivers/getbyid/${Api().sp.read('id')}',
+     auth: true,);
+     if (response.statusCode == 200) {
+       driverDetailsModel = DriverDetailsModel.fromJson(response.data);
+      getDriverLoader(false);
+      update();
+    }
+  }
 
 
 

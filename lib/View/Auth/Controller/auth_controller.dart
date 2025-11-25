@@ -24,8 +24,7 @@ class AuthController extends GetxController {
     );
     if (response.statusCode == 200) {
       Api().sp.write('token', response.data['token']);
-     Api().sp.write('id', response.data['driverInfo']['id']);
-
+      Api().sp.write('id', response.data['driverInfo']['id']);
 
       print("-----------------------User Login Sucessfull");
       print("Full Login Response: ${response.data}");

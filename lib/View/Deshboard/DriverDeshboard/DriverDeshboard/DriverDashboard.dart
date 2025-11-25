@@ -28,12 +28,13 @@ class _DriverDashboardState extends State<DriverDashboard> {
     const JobDetailsScreen(),
     const MyEarningsScreen(),
     // Center(child: Text('Your Trips')),
-    const ProfileScreen(),
+    ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: theme.scaffoldBackgroundColor,
@@ -87,308 +88,347 @@ class _DashboardHomeState extends State<DashboardHome> {
 
   bool isPanicActive = false;
 
+  // @override
+  // void initState() {
+  //   super.initState();
+
+  // }
+
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Column(
-      children: [
-        Container(
-          color: const Color.fromARGB(255, 91, 19, 128),
-          padding: const EdgeInsets.only(
-            top: 10,
-            left: 20,
-            right: 20,
-            bottom: 15,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Driver Dashboard',
-                style: gilroySemiBold(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              GestureDetector(
-               onTap: () {
-    controller.logOutConfirmation();
-  },
-                child: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.green,
-                  ),
-                  padding: const EdgeInsets.all(6),
-                  child: const Icon(
-                    Icons.power_settings_new,
-                    size: 25,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.only(
-            top: 10,
-            bottom: 10,
-            left: 17,
-            right: 17,
-          ),
-          decoration: BoxDecoration(
-            color: theme.cardColor,
 
-            ///-----------------------------------------------
-            borderRadius: const BorderRadius.vertical(
-              bottom: Radius.circular(30),
-            ),
-          ),
-          child: Column(
-            children: [
-              Row(
+    String? imageUrl = controller.driverDetailsModel?.driver?.image;
+    final theme = Theme.of(context);
+    return GetBuilder<Deshboard>(
+      initState: (v) {
+        controller.driverDetail();
+      },
+      builder: (controller) {
+        return controller.getDriverLoader == true
+            ? CircularProgressIndicator()
+            : Column(
                 children: [
-                  const CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage('assets/profile.jpg'),
-                  ),
-                  const SizedBox(width: 15),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Welcome Back !',
-                        style: gilroyBold(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: theme.textTheme.bodyMedium!.color,
+                  Container(
+                    color: const Color.fromARGB(255, 91, 19, 128),
+                    padding: const EdgeInsets.only(
+                      top: 10,
+                      left: 20,
+                      right: 20,
+                      bottom: 15,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Driver Dashboard',
+                          style: gilroySemiBold(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Jonathan Patterson',
-                        style: gilroyMedium(
-                          fontSize: 15,
-                          color: theme.textTheme.bodyMedium!.color,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          const Icon(Icons.badge_outlined),
-                          Text(
-                            '1',
-                            style: gilroyMedium(
-                              fontSize: 13,
-                              color: theme.textTheme.bodyMedium!.color,
+                        GestureDetector(
+                          onTap: () {
+                            controller.logOutConfirmation();
+                          },
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.green,
+                            ),
+                            padding: const EdgeInsets.all(6),
+                            child: const Icon(
+                              Icons.power_settings_new,
+                              size: 25,
+                              color: Colors.white,
                             ),
                           ),
-                          const SizedBox(width: 30),
-                          Icon(
-                            Icons.assignment,
-                            color: theme.textTheme.bodyMedium!.color,
-                          ),
-                          Obx(
-                            () => Text(
-                              amountController.hideAmount.value
-                                  ? "*****"
-                                  : "100",
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 10,
+                      bottom: 10,
+                      left: 17,
+                      right: 17,
+                    ),
+                    decoration: BoxDecoration(
+                      color: theme.cardColor,
+
+                      ///-----------------------------------------------
+                      borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(30),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                             CircleAvatar(
+                              radius: 30,
+                              backgroundImage:
+                              NetworkImage(controller.driverDetailsModel!.driver!.image.toString() ),
+                              // AssetImage('assets/profile.jpg'),
+                            ),
+                            const SizedBox(width: 15),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Welcome Back !',
+                                  style: gilroyBold(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                    color: theme.textTheme.bodyMedium!.color,
+                                  ),
+                                ),
+                                Text(
+                                  controller.driverDetailsModel!.driver!.username??"Guest" ,
+                                  style: gilroyMedium(
+                                    fontSize: 15,
+                                    color: theme.textTheme.bodyMedium!.color,
+                                  ),
+                                ),
+
+                                Row(
+                                  children: [
+                                    const Icon(Icons.badge_outlined),
+                                    Text(
+                                      controller.driverDetailsModel!.driver!.rank.toString() ?? "0",
+                                      style: gilroyMedium(
+                                        fontSize: 13,
+                                        color:
+                                            theme.textTheme.bodyMedium!.color,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 30),
+                                    Icon(
+                                      Icons.assignment,
+                                      color: theme.textTheme.bodyMedium!.color,
+                                    ),
+                                    Obx(
+                                      () => Text(
+                                        amountController.hideAmount.value
+                                            ? "*****"
+                                            :  controller.driverDetailsModel!.driver!.balance ??"100" ,
+                                        style: gilroyMedium(
+                                          fontSize: 13,
+                                          color:
+                                              theme.textTheme.bodyMedium!.color,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            Stack(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.toNamed(Routes.notificationsScreen);
+                                  },
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.green,
+                                    ),
+                                    padding: const EdgeInsets.all(6),
+                                    child: Icon(
+                                      Icons.notifications,
+                                      color: theme.textTheme.bodyMedium!.color,
+                                      size: 24,
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  right: 0,
+                                  top: 0,
+                                  child: Container(
+                                    width: 10,
+                                    height: 10,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on,
+                              size: 25,
+                              color: Colors.green,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                               controller.driverDetailsModel!.driver!.address ??  "No Address" ,
                               style: gilroyMedium(
                                 fontSize: 13,
                                 color: theme.textTheme.bodyMedium!.color,
                               ),
                             ),
+                          ],
+                        ),
+                        const SizedBox(height: 5),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 13,
+                          ),
+                          decoration: BoxDecoration(
+                            color: theme
+                                .inputDecorationTheme
+                                .fillColor, //--------------------------------------------------------
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.timer,
+                                color: Colors.green,
+                                size: 25,
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                '0hr , 24 mins . 56 sec',
+                                style: gilroyMedium(
+                                  fontSize: 15,
+                                  color: theme.textTheme.bodyMedium!.color,
+                                ),
+                              ),
+                              const Spacer(),
+                              const Icon(
+                                Icons.grid_view,
+                                color: Color.fromARGB(255, 91, 19, 128),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 80,
+                        vertical: 5.0,
+                      ),
+                      child: GridView.count(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                        children: [
+                          GestureDetector(
+                            onTap: () => Get.toNamed('/MessageScreen'),
+                            child: _buildDashboardButton(
+                              Icons.email,
+                              'Messages',
+                              badge: true,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => Get.toNamed(Routes.BookingScreen),
+                            child: _buildDashboardButton(
+                              Icons.task_alt,
+                              'Booking',
+                            ),
+                          ),
+                          // ✅ Break button toggle
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isBreakActive = !isBreakActive;
+                              });
+                              Get.toNamed(Routes.BreakScreen);
+                            },
+                            child: _buildDashboardButton(
+                              Icons.coffee,
+                              'Break',
+                              active: isBreakActive,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => Get.to(const SettingsScreen()),
+                            child: _buildDashboardButton(
+                              Icons.settings,
+                              'Settings',
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(Routes.PlotScreen);
+                            },
+                            child: _buildDashboardButton(
+                              Icons.north_east,
+                              'Plots',
+                              check: true,
+                            ),
+                          ),
+                          // ✅ Panic button toggle
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isPanicActive = !isPanicActive;
+                              });
+                            },
+                            child: _buildDashboardButton(
+                              Icons.warning,
+                              'Panic',
+                              active: isPanicActive,
+                            ),
+                          ),
+                          // Statistics Button-----------
+                          GestureDetector(
+                            onTap: () => Get.to(const MultiJobScreen()),
+                            child: _buildDashboardButton(
+                              null,
+                              'Multi Job',
+                              imagePath: 'assets/car-sharing.png',
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => Get.to(const StaticticsScreen()),
+                            child: _buildDashboardButton(
+                              null,
+                              "Statistics",
+                              imagePath: 'assets/static.png',
+                            ),
+                          ),
+
+                          GestureDetector(
+                            onTap: () => Get.to(const FlagDownScreen()),
+                            child: _buildDashboardButton(
+                              null,
+                              'Flag Down',
+                              imagePath: 'assets/flagDown2.png',
+                            ),
+                          ),
+
+                          GestureDetector(
+                            onTap: () => Get.to(const DriverPaymentScreen()),
+                            child: _buildDashboardButton(
+                              null,
+                              "Driver Pay",
+                              imagePath: 'assets/driverpay.png',
+                            ),
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  const Spacer(),
-                  Stack(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed(Routes.notificationsScreen);
-                        },
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.green,
-                          ),
-                          padding: const EdgeInsets.all(6),
-                          child: Icon(
-                            Icons.notifications,
-                            color: theme.textTheme.bodyMedium!.color,
-                            size: 24,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        top: 0,
-                        child: Container(
-                          width: 10,
-                          height: 10,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.red,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              Row(
-                children: [
-                  const Icon(Icons.location_on, size: 25, color: Colors.green),
-                  const SizedBox(width: 10),
-                  Text(
-                    '123 Anywhere Street, Any City',
-                    style: gilroyMedium(
-                      fontSize: 13,
-                      color: theme.textTheme.bodyMedium!.color,
                     ),
                   ),
                 ],
-              ),
-              const SizedBox(height: 5),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 13,
-                ),
-                decoration: BoxDecoration(
-                  color: theme
-                      .inputDecorationTheme
-                      .fillColor, //--------------------------------------------------------
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.timer, color: Colors.green, size: 25),
-                    const SizedBox(width: 10),
-                    Text(
-                      '0hr , 24 mins . 56 sec',
-                      style: gilroyMedium(
-                        fontSize: 15,
-                        color: theme.textTheme.bodyMedium!.color,
-                      ),
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.grid_view,
-                      color: Color.fromARGB(255, 91, 19, 128),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 5),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 5.0),
-            child: GridView.count(
-              crossAxisCount: 2,
-              crossAxisSpacing: 15,
-              mainAxisSpacing: 15,
-              children: [
-                GestureDetector(
-                  onTap: () => Get.toNamed('/MessageScreen'),
-                  child: _buildDashboardButton(
-                    Icons.email,
-                    'Messages',
-                    badge: true,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () => Get.toNamed(Routes.BookingScreen),
-                  child: _buildDashboardButton(Icons.task_alt, 'Booking'),
-                ),
-                // ✅ Break button toggle
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isBreakActive = !isBreakActive;
-                    });
-                    Get.toNamed(Routes.BreakScreen);
-                  },
-                  child: _buildDashboardButton(
-                    Icons.coffee,
-                    'Break',
-                    active: isBreakActive,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () => Get.to(const SettingsScreen()),
-                  child: _buildDashboardButton(Icons.settings, 'Settings'),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed(Routes.PlotScreen);
-                  },
-                  child: _buildDashboardButton(
-                    Icons.north_east,
-                    'Plots',
-                    check: true,
-                  ),
-                ),
-                // ✅ Panic button toggle
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isPanicActive = !isPanicActive;
-                    });
-                  },
-                  child: _buildDashboardButton(
-                    Icons.warning,
-                    'Panic',
-                    active: isPanicActive,
-                  ),
-                ),
-                // Statistics Button-----------
-                GestureDetector(
-                  onTap: () => Get.to(const MultiJobScreen()),
-                  child: _buildDashboardButton(
-                    null,
-                    'Multi Job',
-                    imagePath: 'assets/car-sharing.png',
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () => Get.to(const StaticticsScreen()),
-                  child: _buildDashboardButton(
-                    null,
-                    "Statistics",
-                    imagePath: 'assets/static.png',
-                  ),
-                ),
-
-                GestureDetector(
-                  onTap: () => Get.to(const FlagDownScreen()),
-                  child: _buildDashboardButton(
-                    null,
-                    'Flag Down',
-                    imagePath: 'assets/flagDown2.png',
-                  ),
-                ),
-
-                GestureDetector(
-                  onTap: () => Get.to(const DriverPaymentScreen()),
-                  child: _buildDashboardButton(
-                    null,
-                    "Driver Pay",
-                    imagePath: 'assets/driverpay.png',
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
+              );
+      },
     );
   }
 
