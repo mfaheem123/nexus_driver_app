@@ -20,6 +20,7 @@ abstract class Routes {
   static const SettingsScreen = _Paths.SettingsScreen;
   static const PlotScreen = _Paths.PlotScreen;
   static const DeshBoardMessageScreen = _Paths.DeshBoardMessageScreen;
+  static const viewDocumentScreen = _Paths.viewDocumentScreen;
 
 
 }
@@ -44,4 +45,5 @@ abstract class _Paths {
   static const SettingsScreen = '/SettingsScreen';
   static const PlotScreen = '/PlotScreen';
   static const DeshBoardMessageScreen = '/MessageScreen';
+  static const viewDocumentScreen = '/viewDocumentScreen';
 }

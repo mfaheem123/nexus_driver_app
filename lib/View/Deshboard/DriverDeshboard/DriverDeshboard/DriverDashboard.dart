@@ -105,7 +105,7 @@ class _DashboardHomeState extends State<DashboardHome> {
       },
       builder: (controller) {
         return controller.getDriverLoader == true
-            ? CircularProgressIndicator()
+            ? Center(child: CircularProgressIndicator())
             : Column(
                 children: [
                   Container(

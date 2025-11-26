@@ -65,7 +65,7 @@ class FareMeterScreen extends StatelessWidget {
                   width: widths,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Theme.of(context).cardTheme.color,
+                    color: theme.bannerTheme.backgroundColor,
                     // Color(0xFF2E2E2E)
                   ),
                   child: Padding(

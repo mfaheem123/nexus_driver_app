@@ -1,6 +1,6 @@
 import 'package:driver_app_alpha/Component/color.dart';
 import 'package:driver_app_alpha/Component/textStyle.dart';
-import 'package:driver_app_alpha/View/Deshboard/BottomScreens/Job/JobInvitationScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/JobInvitationScreen.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/fareMeterScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

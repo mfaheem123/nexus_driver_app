@@ -16,7 +16,7 @@ class UThemeData {
     bannerTheme: MaterialBannerThemeData(backgroundColor: const   Color(0xff2A1655),) ,  
     cardColor: Colors.white,
     primaryColor:  const Color(0xff40158B),
-    cardTheme: const CardThemeData(color: Color(0xff2A1655)),
+    cardTheme: const CardThemeData(color: Color(0xffe1dfe8)),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: const TextStyle(color: Colors.white),
       filled: true,

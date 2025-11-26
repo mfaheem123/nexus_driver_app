@@ -2,10 +2,11 @@ import 'package:driver_app_alpha/View/Auth/Controller/auth_controller.dart';
 import 'package:driver_app_alpha/View/Auth/LoginScreen.dart';
 import 'package:driver_app_alpha/View/Auth/TokenScree.dart';
 import 'package:driver_app_alpha/View/Auth/selectCompany.dart';
-import 'package:driver_app_alpha/View/Deshboard/BottomScreens/Job/JobInvitationScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/JobInvitationScreen.dart';
 import 'package:driver_app_alpha/View/Deshboard/BottomScreens/Job/jobAlert.dart';
 import 'package:driver_app_alpha/View/Deshboard/BottomScreens/Job/jobDetailsScreen.dart';
 import 'package:driver_app_alpha/View/Deshboard/BottomScreens/ProfileScreen/profileScreen.dart';
+import 'package:driver_app_alpha/View/Deshboard/BottomScreens/ProfileScreen/view_document.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/Booking_Home/booking.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/ShowAmount/showamount.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/fareMeterScreen.dart';
@@ -56,6 +57,7 @@ class AppPages {
     GetPage(name: _Paths.BookingScreen, page: () => Booking_Screen()),
     GetPage(name: _Paths.SettingsScreen, page: () => SettingsScreen()),
     GetPage(name: _Paths.PlotScreen, page: () => PlotScreen()),
+    GetPage(name: _Paths.viewDocumentScreen, page: () => ViewDocument_Screen()),
     GetPage(
       name: _Paths.DeshBoardMessageScreen,
       page: () => DeshBoardMessageScreen(),

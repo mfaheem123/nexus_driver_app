@@ -1,3 +1,4 @@
+import 'package:driver_app_alpha/View/Deshboard/BottomScreens/ProfileScreen/view_document.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/DriverDeshboard/DriverDashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -108,12 +109,17 @@ class ProfileScreen extends StatelessWidget {
                         value: controller.driverDetailsModel!.driver!.vehicle!.vehicleType!.name ??"No vehicle",
                       ),
                       const SizedBox(height: 10),
-                      const Text(
-                        "View Document",
-                        style: TextStyle(
-                          color: Colors.amber,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15,
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(ViewDocument_Screen());
+                        },
+                        child: Text(
+                          "View Document",
+                          style: TextStyle(
+                            color: Colors.amber,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
                     ],
