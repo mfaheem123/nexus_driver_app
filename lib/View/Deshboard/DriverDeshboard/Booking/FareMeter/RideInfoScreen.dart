@@ -542,6 +542,14 @@ class RideInfoScreen extends StatelessWidget {
   }
 }
 
+
+
+
+
+
+
+
+
 class SwipeToArriveCard extends StatefulWidget {
   const SwipeToArriveCard({super.key});
 
@@ -558,69 +566,66 @@ class _SwipeToArriveCardState extends State<SwipeToArriveCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return GetBuilder(
-      builder: (context) {
-        return Container(
-          height: 70,
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            color:   theme.focusColor, // yha pr color hai ------------------------
-            borderRadius: BorderRadius.circular(50),
+    return Container(
+      height: 70,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
+        color:   theme.focusColor, // yha pr color hai ------------------------
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: Stack(
+        children: [
+          Center(
+            child: Text(
+              _isArrived ? "ARRIVED!" : "      Swipe to ARRIVED",
+              style:  TextStyle(
+                color: Colors.white, // yha pr color hai ------------------------
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
           ),
-          child: Stack(
-            children: [
-              Center(
-                child: Text(
-                  _isArrived ? "ARRIVED!" : "      Swipe to ARRIVED",
-                  style:  TextStyle(
-                    color: Colors.white, // yha pr color hai ------------------------
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
+          Positioned(
+            left: _isArrived ? maxSwipeDistance : _position,
+            child: GestureDetector(
+              onHorizontalDragUpdate: (details) {
+                setState(() {
+                  _position += details.delta.dx;
+                  if (_position < 0) _position = 0;
+                  if (_position > maxSwipeDistance)
+                    _position = maxSwipeDistance;
+                });
+              },
+              onHorizontalDragEnd: (details) {
+                if (_position >= maxSwipeDistance) {
+                  setState(() => _isArrived = true);
+
+                  /// ✅ Navigate after swipe
+                  Future.delayed(const Duration(milliseconds: 400), () {
+                    Get.toNamed(Routes.fareMeterScreen);
+                  });
+                } else {
+                  setState(() => _position = 0); // reset if not full swipe
+                }
+              },
+              child: Container(
+                width: 70,
+                height: 70,
+                decoration: const BoxDecoration(
+                  color: Color(0xffE9FF6C),
+
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.double_arrow_rounded,
+                  size: 30,
+                  color: Colors.black,
                 ),
               ),
-              Positioned(
-                left: _isArrived ? maxSwipeDistance : _position,
-                child: GestureDetector(
-                  onHorizontalDragUpdate: (details) {
-                    setState(() {
-                      _position += details.delta.dx;
-                      if (_position < 0) _position = 0;
-                      if (_position > maxSwipeDistance)
-                        _position = maxSwipeDistance;
-                    });
-                  },
-                  onHorizontalDragEnd: (details) {
-                    if (_position >= maxSwipeDistance) {
-                      setState(() => _isArrived = true);
-                      Future.delayed(const Duration(milliseconds: 400), () async {
-                      await  Get.toNamed(Routes.fareMeterScreen);
-
-                      });
-                    } else {
-                      setState(() => _position = 0);
-                    }
-                  },
-                  child: Container(
-                    width: 70,
-                    height: 70,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffE9FF6C),
-
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.double_arrow_rounded,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-        );
-      }
+        ],
+      ),
     );
   }
 }

@@ -83,7 +83,7 @@ class _DashboardHomeState extends State<DashboardHome> {
   Deshboard controller = Get.isRegistered<Deshboard>()
       ? Get.find<Deshboard>()
       : Get.put(Deshboard());
-
+  final TimerController timerController = Get.find();
   bool isBreakActive = false;
 
   bool isPanicActive = false;
@@ -298,13 +298,14 @@ class _DashboardHomeState extends State<DashboardHome> {
                                 size: 25,
                               ),
                               const SizedBox(width: 10),
-                              Text(
-                                '0hr , 24 mins . 56 sec',
+                              Obx(() => Text(
+                                timerController.formatTime(timerController.seconds.value),
                                 style: gilroyMedium(
                                   fontSize: 15,
                                   color: theme.textTheme.bodyMedium!.color,
                                 ),
-                              ),
+                              )),
+
                               const Spacer(),
                               const Icon(
                                 Icons.grid_view,
