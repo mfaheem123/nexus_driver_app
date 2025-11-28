@@ -1,18 +1,36 @@
 import 'package:driver_app_alpha/Component/textStyle.dart';
 import 'package:driver_app_alpha/View/Deshboard/DriverDeshboard/Booking/FareMeter/ShowAmount/showamount.dart';
-import 'package:driver_app_alpha/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-class FareMeterScreen extends StatelessWidget {
+import 'package:wakelock_plus/wakelock_plus.dart';
+class FareMeterScreen extends StatefulWidget {
   const FareMeterScreen({super.key});
+
+  @override
+  State<FareMeterScreen> createState() => _FareMeterScreenState();
+}
+
+class _FareMeterScreenState extends State<FareMeterScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    // Screen ko sone se rokna
+    WakelockPlus.enable();
+  }
+
+  @override
+  void dispose() {
+    // Screen ko wapis normal karna
+    WakelockPlus.disable();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     double heights = MediaQuery.of(context).size.height;
     double widths = MediaQuery.of(context).size.width;
-
     return SafeArea(
       child: Scaffold(
        backgroundColor: theme.bannerTheme.backgroundColor,
@@ -57,7 +75,7 @@ class FareMeterScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: heights * 0.02),
-          
+
               /// Main Fare / Distance Card
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -199,9 +217,9 @@ class FareMeterScreen extends StatelessWidget {
                   ),
                 ),
               ),
-          
+
               SizedBox(height: heights * 0.02),
-          
+
               /// Wait & Traffic Buttons
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 13.0),
@@ -227,7 +245,7 @@ class FareMeterScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-          
+
                     Container(
                       height: heights / 13,
                       width: widths / 2.3,
@@ -250,14 +268,14 @@ class FareMeterScreen extends StatelessWidget {
                   ],
                 ),
               ),
-          
+
               SizedBox(height: heights / 20),
-          
+
               /// Swipe Card
               Center(child: SwipeToClearCard()),
-          
+
               SizedBox(height: heights / 20),
-          
+
               /// Passenger Card
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -461,12 +479,10 @@ class SwipeToClearCard extends StatefulWidget {
 
 class _SwipeToClearCardState extends State<SwipeToClearCard> {
   double _position = 0.0;
-
   bool _isStarted = false; // Step 1
   bool _isSoonToClear = false; // Step 2
   bool _isCleared = false; // Step 3
-
-  double maxSwipeDistance = 250; // max drag distance
+  double maxSwipeDistance = 310; // max drag distance
 
   @override
   Widget build(BuildContext context) {
@@ -550,7 +566,7 @@ class _SwipeToClearCardState extends State<SwipeToClearCard> {
               child: Container(
                 width: 70,
                 height: 70,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Colors.white,
                   // Color(0xFF5B1380),
                   shape: BoxShape.circle,

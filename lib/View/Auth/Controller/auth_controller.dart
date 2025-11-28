@@ -49,7 +49,7 @@ class AuthController extends GetxController {
     var response = await Api().post(
       formData,
       "drivers/verifytoken",
-      // fullUrl: 'http://192.168.110.4:5000/api/drivers/verifytoken',
+
       auth: true,
     );
     if (response.statusCode == 200) {

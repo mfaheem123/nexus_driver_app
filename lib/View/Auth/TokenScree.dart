@@ -125,7 +125,7 @@ class TokenScreen extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {
                             controller.verifyNTG();
-                       
+                       controller.nTG.clear();
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.green,

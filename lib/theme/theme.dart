@@ -10,6 +10,7 @@ class UThemeData {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: Colors.white,
+      highlightColor: Colors.white,
     hintColor: Color(0xff462C87),
         canvasColor: Colors.white,
         focusColor: Color(0xff462C87),
@@ -41,6 +42,8 @@ class UThemeData {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     bannerTheme:        MaterialBannerThemeData(backgroundColor:  Color(0xff0F0F0F),) ,
+  highlightColor:
+   Color(0xffE9FF6C),
     canvasColor: Color.fromARGB(255, 77, 68, 82),
     scaffoldBackgroundColor: Color(0xff0F0F0F),
     hintColor: Colors.white,

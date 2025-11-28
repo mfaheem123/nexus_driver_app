@@ -216,7 +216,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               // if (_formKey.currentState!.validate()) {
                               //   //  Get.toNamed(Routes.tokenScreen);
                               // }
-            
+            controller.DriverUserName.clear();
+            controller.DriverPassword.clear();
+
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color.fromARGB(

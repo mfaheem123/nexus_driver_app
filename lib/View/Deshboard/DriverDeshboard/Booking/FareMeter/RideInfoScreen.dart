@@ -552,17 +552,13 @@ class RideInfoScreen extends StatelessWidget {
 
 class SwipeToArriveCard extends StatefulWidget {
   const SwipeToArriveCard({super.key});
-
   @override
   State<SwipeToArriveCard> createState() => _SwipeToArriveCardState();
 }
-
 class _SwipeToArriveCardState extends State<SwipeToArriveCard> {
   double _position = 0.0;
-  double maxSwipeDistance = 250;
-
+  double maxSwipeDistance = 280;
   bool _isArrived = false;
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

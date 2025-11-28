@@ -130,6 +130,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                         GestureDetector(
                           onTap: () {
                             controller.logOutConfirmation();
+
                           },
                           child: Container(
                             decoration: const BoxDecoration(

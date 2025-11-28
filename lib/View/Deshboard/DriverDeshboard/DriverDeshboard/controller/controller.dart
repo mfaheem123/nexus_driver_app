@@ -8,6 +8,10 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class Deshboard extends GetxController {
+  final timerController = Get.find<TimerController>();
+
+
+
   RxBool LogoutLoader = false.obs;
   DateTime? lastLogoutPress; // <-- New variable
   logOutConfirmation() async {
@@ -18,13 +22,17 @@ class Deshboard extends GetxController {
       Get.snackbar(
         "Logout",
         "Again tap to logout",
+        backgroundColor: Color.fromARGB(255, 91, 19, 128),
+        colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(seconds: 2),
       );
     } else {
       await logOut();
+      timerController.stopTimer();
     }
   }
+
 
   logOut() async {
     LogoutLoader.value = true;
@@ -36,6 +44,7 @@ class Deshboard extends GetxController {
     );
     if (response.statusCode == 200) {
       Api().sp.erase();
+
       Get.offAllNamed(Routes.SelectCompany);
       print("Sending ID: ${Api().sp.read('id')}");
       print("Logout Success: ${response.data}");
@@ -60,74 +69,6 @@ class Deshboard extends GetxController {
     }
   }
 }
-//
-// class TimerController extends GetxController with WidgetsBindingObserver {
-//   var seconds = 0.obs;
-//   Timer? timer;
-//   final box = GetStorage();
-//
-//   @override
-//   void onInit() {
-//     super.onInit();
-//     WidgetsBinding.instance.addObserver(this);
-//     seconds.value = 0;
-//     box.remove("timer");
-//     box.write("running", true);
-//     startTimer();
-//   }
-
-
-//   void startTimer() {
-//     timer?.cancel();
-//     timer = Timer.periodic(const Duration(seconds: 1), (_) {
-//       seconds.value++;
-//       box.write("timer", seconds.value);
-//     });
-//   }
-//
-//   void resetTimer() {
-//     seconds.value = 0;
-//     box.remove("timer");
-//   }
-//
-//   void pauseTimer() {
-//     timer?.cancel();
-//   }
-//
-//   @override
-//   void didChangeAppLifecycleState(AppLifecycleState state) {
-//     if (state == AppLifecycleState.paused
-//         ||  state == AppLifecycleState.inactive
-//     ) {
-//
-//       resetTimer();
-//       pauseTimer();
-//       box.write("running", false);
-//     }
-//
-//     if (state == AppLifecycleState.resumed) {
-//       /// ✔ Back again → fresh session
-//       box.write("running", true);
-//       startTimer();
-//     }
-//   }
-//
-//   @override
-//   void onClose() {
-//     resetTimer();
-//     pauseTimer();
-//     box.write("running", false);
-//     WidgetsBinding.instance.removeObserver(this);
-//     super.onClose();
-//   }
-//
-//   String formatTime(int sec) {
-//     int hours = sec ~/ 3600;
-//     int minutes = (sec % 3600) ~/ 60;
-//     int secs = sec % 60;
-//     return '${hours}hr , ${minutes} mins . ${secs} sec';
-//   }
-// }
 
 
 
@@ -136,60 +77,78 @@ class TimerController extends GetxController with WidgetsBindingObserver {
   Timer? timer;
   final box = GetStorage();
 
+
   @override
   void onInit() {
     super.onInit();
     WidgetsBinding.instance.addObserver(this);
+
     bool wasRunning = box.read("running") ?? false;
-    if (wasRunning) {
-      seconds.value = box.read("timer") ?? 0;
-    } else {
+
+    int lastOpen = box.read("lastOpen") ?? 0;
+    int now = DateTime.now().millisecondsSinceEpoch;
+
+    // Agar app 15 seconds se zyada band rahi → RESET
+    if (now - lastOpen > 1500) {
       seconds.value = 0;
-      box.remove("timer");
+      box.write("timer", 0);
+    } else {
+      seconds.value = box.read("timer") ?? 0;
+    startTimer();
     }
-    box.write("running", true);
     startTimer();
   }
 
 
-  void stopTimer() {
-    timer?.cancel();
-    seconds.value = 0;
-    box.write("running", false);
-    box.remove("timer");
-  }
-
   void startTimer() {
     timer?.cancel();
-    timer = Timer.periodic(const Duration(seconds: 1), (_) {
+    box.write("running", true);   // IMPORTANT
+    timer = Timer.periodic(Duration(seconds: 1), (_) {
       seconds.value++;
       box.write("timer", seconds.value);
     });
   }
 
+
   void pauseTimer() {
     timer?.cancel();
   }
 
+  void stopTimer() {
+    timer?.cancel();
+    seconds.value = 0;
+    box.write("timer", 0);
+    box.write("running", false);
+  }
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused ||
-        state == AppLifecycleState.inactive) {
-      /// Background ⇒ pause only
+
+    // Jab app inactive ya paused ho (background me jaye)
+    if (state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.paused) {
       pauseTimer();
-      box.write("running", true); // still running session
+      print("----------------------------------Paused/Inactive Timer");
     }
+
+    // Jab app bilkul close hone ke qareeb ho (UI detach ho jaye)
+    if (state == AppLifecycleState.detached) {
+      stopTimer();
+      print("----------------------------------Detached: Timer Stopped Completely");
+    }
+
+    // Jab app dubara active ho (foreground me aye)
     if (state == AppLifecycleState.resumed) {
-      /// Back to app ⇒ continue
-      box.write("running", true);
       startTimer();
+      print("-----------------------------------------------------Start Timer");
     }
   }
 
   @override
   void onClose() {
-    /// App Kill ⇒ next time reset
+    // 🔥 App kill = RESET TIMER
     box.write("running", false);
+    box.write("timer", 0);
     pauseTimer();
     WidgetsBinding.instance.removeObserver(this);
     super.onClose();
@@ -199,6 +158,7 @@ class TimerController extends GetxController with WidgetsBindingObserver {
     int hours = sec ~/ 3600;
     int minutes = (sec % 3600) ~/ 60;
     int secs = sec % 60;
+
     return '${hours}hr , ${minutes} mins . ${secs} sec';
   }
 }
