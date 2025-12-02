@@ -77,7 +77,6 @@ class TimerController extends GetxController with WidgetsBindingObserver {
   Timer? timer;
   final box = GetStorage();
 
-
   @override
   void onInit() {
     super.onInit();

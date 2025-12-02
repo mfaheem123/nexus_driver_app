@@ -7,10 +7,17 @@ import 'package:driver_app_alpha/View/Auth/TokenScree.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../Model/select_company_model.dart' ;
+
 class AuthController extends GetxController {
+
+
+  /// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> login Function
+
   TextEditingController DriverUserName = TextEditingController();
   TextEditingController DriverPassword = TextEditingController();
   RxBool PostAuthLoader = false.obs;
+
   authApi() async {
     PostAuthLoader.value = true;
     var formData = {
@@ -25,7 +32,6 @@ class AuthController extends GetxController {
     if (response.statusCode == 200) {
       Api().sp.write('token', response.data['token']);
       Api().sp.write('id', response.data['driverInfo']['id']);
-
       print("-----------------------User Login Sucessfull");
       print("Full Login Response: ${response.data}");
       print("Driver object: ${response.data['driverInfo']}");
@@ -37,7 +43,7 @@ class AuthController extends GetxController {
   }
 
 
-
+/// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NTG Function
   TextEditingController nTG = TextEditingController();
   RxBool NTGLoad = false.obs;
   verifyNTG() async {
@@ -49,12 +55,10 @@ class AuthController extends GetxController {
     var response = await Api().post(
       formData,
       "drivers/verifytoken",
-
       auth: true,
     );
     if (response.statusCode == 200) {
       Get.toNamed(Routes.driverDashboard);
-
       print("-----------------------NTG Okay");
     } else {
       print("-----------------------------NTG Failed");
@@ -64,9 +68,18 @@ class AuthController extends GetxController {
 
 
 
-
-
-
+TextEditingController companyID = TextEditingController();
+  SelectCompanyModel? selectCompanyModel;
+  RxBool selectCompanyLoader = false.obs;
+  selectCompany() async {
+    selectCompanyLoader(true);
+    var response = await Api().get("drivers/company/${companyID.text}",);
+    if (response.statusCode == 200) {
+     selectCompanyModel = SelectCompanyModel.fromJson(response.data);
+    }
+    selectCompanyLoader(false);
+    update();
+  }
 
 }
 
@@ -75,7 +88,7 @@ class AuthController extends GetxController {
 
 
 
-
+///>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Check Location & then rout
 class AuthMiddleware extends GetMiddleware {
 
 

@@ -66,12 +66,12 @@ class ProfileScreen extends StatelessWidget {
                     Text(controller.driverDetailsModel!.driver!.address??"No address", style: TextStyle(color: Colors.white70)),
                   ],
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 15),
 
                 // Profile Info Card
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
-                  padding: const EdgeInsets.all(50),
+                  padding: const EdgeInsets.all(80),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(20),

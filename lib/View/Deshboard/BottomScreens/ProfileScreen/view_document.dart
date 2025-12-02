@@ -17,21 +17,31 @@ class ViewDocument_Screen extends StatelessWidget {
     return GetBuilder<Deshboard>(
       builder: (controller) {
         return Scaffold(
+
           backgroundColor: const Color(0xFF5A287D),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(top: 50),
               child: Column(
                 children: [
-                  const Center(
-                    child: Text(
-                      "View Document",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Align(
+                          alignment: Alignment.topLeft,
+                          child: IconButton(onPressed: (){Get.back();}, icon: const Icon(Icons.arrow_back_sharp, color: Colors.white,))),
+                      const Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "View Document",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
 
                   const SizedBox(height: 25),
